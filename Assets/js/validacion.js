@@ -35,3 +35,4 @@ function sololetras(e) {
     }
 }
         //LLamar: onkeypress="return sololetras(event)" onpaste="return false"
+}
