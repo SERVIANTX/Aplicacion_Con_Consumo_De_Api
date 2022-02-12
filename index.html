@@ -10,6 +10,7 @@
     <title>APLICATIVO EMPLEADOS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="Assets/js/guardar.js"></script>
+    <script src="Assets/js/validacion.js"></script>
     
 </head>
 <body>
@@ -18,28 +19,28 @@
         <form class="row g-3 " >
             <div class="col-md-12">
               <label for="inputEmail4" class="form-label">Nombre</label>
-              <input placeholder="escribir..." type="text" class="form-control" id="txtnombre" name="txtnombre" required>
+              <input placeholder="escribir..." type="text" class="form-control" id="txtnombre" name="txtnombre" onkeypress="return sololetras(event)" onpaste="return false" required>
              
 
             </div>
             <div class="col-md-6" >
               <label for="inputPassword4" class="form-label">Apellido Paterno</label>
-              <input placeholder="escribir..." type="text" class="form-control" id="txtapellido_paterno" name="txtapellido_paterno" required>
+              <input placeholder="escribir..." type="text" class="form-control" id="txtapellido_paterno" name="txtapellido_paterno" onkeypress="return sololetras(event)" onpaste="return false" required>
 
             </div>
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Apellido Materno</label>
-                <input placeholder="escribir..." type="text" class="form-control" id="txtapellido_materno" name="txtapellido_materno" required>
+                <input placeholder="escribir..." type="text" class="form-control" id="txtapellido_materno" name="txtapellido_materno" onkeypress="return sololetras(event)" onpaste="return false" required>
 
               </div>
               <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">Numero de Documento</label>
-                <input placeholder="escribir..." type="text" class="form-control" id="txtnumero_documento_identidad" name="txtnumero_documento_identidad" required>
+                <input placeholder="escribir..." type="text" class="form-control" id="txtnumero_documento_identidad" name="txtnumero_documento_identidad" onkeypress="return solonumeros(event)" onpaste="return false" required>
 
               </div>
               <div class="col-md-6">
                 <label for="inputPassword4" ...class="form-label">Nacionalidad</label>
-                <input placeholder="escribir..." type="text" class="form-control" id="txtpais" name="txtpais" required>
+                <input placeholder="escribir..." type="text" class="form-control" id="txtpais" name="txtpais" onkeypress="return sololetras(event)" onpaste="return false" required>
                 
               </div>
         
