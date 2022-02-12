@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="Assets/js/guardar.js"></script>
     <script src="Assets/js/validacion.js"></script>
+    <script src="Assets/js/listar.js"></script>
     
 </head>
 <body>
@@ -52,30 +53,10 @@
     
     <div class="container">
 
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col" >ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido Paterno</th>
-                <th scope="col">Apellido Materno</th>
-                <th scope="col">N° Doc</th>
-                <th scope="col">Pais</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-            </tbody>
+        <table class="table" id="tablaempleados">
           </table>
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">LISTAR</button>
+            <button onclick="listar()" type="submit" class="btn btn-primary">LISTAR</button>
           </div>
     </div>
 
