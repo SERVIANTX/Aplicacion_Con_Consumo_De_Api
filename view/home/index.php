@@ -3,7 +3,7 @@
     <head>
         
         <?php
-            require_once("../html/MainHead.php")
+            require_once("../html/MainHead.php");
         ?>
         <title>Inicio</title>
 
@@ -14,7 +14,7 @@
 
         <!-- Start Sidemenu Area -->
         <?php
-            require_once("../html/MainMenu.php")
+            require_once("../html/MainMenu.php");
         ?>
         <!-- End Sidemenu Area -->
 
@@ -23,7 +23,7 @@
 
             <!-- Top Navbar Area -->
             <?php
-            require_once("../html/MainNavbar.php")
+            require_once("../html/MainNavbar.php");
             ?>
             <!-- End Top Navbar Area -->
             
@@ -44,14 +44,14 @@
 
             <!-- Start Footer End -->
             <?php
-            require_once("../html/MainFooter.php")
+            require_once("../html/MainFooter.php");
             ?>
             <!-- End Footer End -->
 
         </div>
         <!-- End Main Content Wrapper Area -->
         <?php
-            require_once("../html/MainJS.php")
+            require_once("../html/MainJS.php");
         ?>
     </body>
 </html>
