@@ -191,22 +191,15 @@ function eliminar(id){
     
     PRODUCTO_TO_DELETE=id;
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-      })
-      
-      swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+    Swal.fire({
+        title: 'Eliminar?',
+        text: "Esta seguro que desea eliminar el registro!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'NO',
+        confirmButtonText: 'Si'
       }).then((result) => {
         if (result.isConfirmed) {
 
@@ -218,20 +211,12 @@ function eliminar(id){
               updateDataTable();
                 });
 
-          swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-          )
+                Swal.fire(
+                    'Eliminado!',
+                    'Eliminado correctamente.',
+                    'success'
+                )
+        }{
         }
       })
 }
