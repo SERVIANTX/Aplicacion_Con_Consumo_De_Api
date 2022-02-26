@@ -1,3 +1,6 @@
+var DT_PRODUCTOS;
+var PRODUCTO_TO_DELETE;
+
 $(document).ready(function(){
 
     DT_PRODUCTOS=$('#tablaempleados').DataTable( {
@@ -171,13 +174,66 @@ function Editar()
 	});	
 }	
 
+function loadConfirmDelete(id)
+{
+    PRODUCTO_TO_DELETE=id;
+    
+    $("#modalContainer1").load("/views/productos/frm-confirm-delete.html",function(response){
+
+        $('#mdlConfirmDelete').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+
+
+    });
+}
+
+
 function eliminar(id){
-    Swal.fire({
-        title: 'Correcto?',
-        text: "Se registro correctamente!",
-        icon: 'success',
-        confirmButtonText: 'Aceptar'
-         })
+    
+    PRODUCTO_TO_DELETE=id;
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.ajax({
+                method: "delete",
+                url: "http://localhost/AngelaMariaApiV1/public/api/empleados/"+PRODUCTO_TO_DELETE,
+              })
+              .done(function( msg ) {
+              updateDataTable();
+                });
+
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
 }
 
 
