@@ -40,9 +40,9 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../mntempleados" class="nav-link">
                     <span class="icon"><i class='bx bx-calendar'></i></span>
-                    <span class="menu-title">Mnt Producto</span>
+                    <span class="menu-title">Mnt Empleado</span>
                 </a>
             </li>
 
