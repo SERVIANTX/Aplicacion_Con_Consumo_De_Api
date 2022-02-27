@@ -169,11 +169,16 @@ function Editar()
 		$("#txtApellido_materno").val("");
 		$("#txtNumero_documento_identidad").val("");
 		$("#txtPais").val("");
-
+       
       
 	});
+    closeModal();
     updateDataTable();	
 }	
+function closeModal()
+{
+$('#mdlEditProducto').modal("hide");
+}
 
 function loadConfirmDelete(id)
 {

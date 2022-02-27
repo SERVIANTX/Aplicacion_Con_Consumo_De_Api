@@ -54,7 +54,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" onclick="Editar()" class="btn btn-primary">Guadar</button>
+                  <a type="submit" onclick="Editar()" class="btn btn-primary">Guadar</a>
                   <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
                 </div>
               </form>
