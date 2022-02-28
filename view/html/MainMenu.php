@@ -40,6 +40,20 @@
             </li>
 
             <li class="nav-item">
+                <a href="../mntcategorias" class="nav-link">
+                    <span class="icon"><i class='bx bx-badge-check'></i></span>
+                    <span class="menu-title">Mnt Categorias</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="../mntpedidos" class="nav-link">
+                    <span class="icon"><i class='bx bx-badge-check'></i></span>
+                    <span class="menu-title">Mnt Pedidos</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="../mntempleados" class="nav-link">
                     <span class="icon"><i class='bx bx-calendar'></i></span>
                     <span class="menu-title">Mnt Empleado</span>

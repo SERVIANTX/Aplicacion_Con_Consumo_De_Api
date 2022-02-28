@@ -41,7 +41,8 @@
 <script type="text/javascript" src="../../App/proveedores/proveedoresController.js"></script>
 <script type="text/javascript" src="../../App/marcas/marcasController.js"></script>
 
-
+<script type="text/javascript" src="../../App/categorias/categoriasController.js"></script>
+<script type="text/javascript" src="../../App/pedidos/pedidosController.js"></script>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
 
