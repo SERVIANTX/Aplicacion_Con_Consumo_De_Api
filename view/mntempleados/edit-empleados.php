@@ -1,9 +1,9 @@
-<div id="mdlEditProducto" class="modal fade" role="dialog">
+<div id="mdlEditEmpleado" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5>Editar producto</h5>
+        <h5>Editar empleado</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
           </button>
@@ -11,7 +11,7 @@
 
       <div class="modal-body">
        
-        <form id="formEditProducto">
+        <form id="formEditEmpleado">
 
           <input type="hidden" name="txtId" id="txtId">
 
@@ -54,15 +54,11 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <a type="submit" onclick="Editar()" class="btn btn-primary">Guadar</a>
+                  <a type="submit" onclick="EditarEmpleado()" class="btn btn-primary">Guardar</a>
                   <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
                 </div>
               </form>
-
-
       </div>
-
-      
     </div>
   </div>
 </div>

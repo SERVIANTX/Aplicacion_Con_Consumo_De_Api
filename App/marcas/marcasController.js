@@ -1,12 +1,12 @@
-var DT_EMPLEADO;
-var EMPLEADO_TO_DELETE;
+var DT_MARCAS;
+var MARCA_TO_DELETE;
 
 $(document).ready(function(){
 
-    DT_EMPLEADO=$('#tablaempleados').DataTable( {
+    DT_MARCAS=$('#tablamarcas').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/empleados",
+                 url: "http://localhost/AngelaMaria/public/api/marcas",
                  dataSrc: 'data',
                  cache: true
                  },
@@ -47,15 +47,11 @@ $(document).ready(function(){
     
                 },   
                  { data: 'nombre' },
-                 { data: 'apellido_paterno' },
-                 { data: 'apellido_materno' },
-                 { data: 'numero_documento_identidad' },
-                 { data: 'pais' },
                  {
                     "targets": 3,
                     "render": function (data, type, row) {
                         
-                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditEmpleado('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarEmpleado('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
+                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditMarca('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarMarca('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
                       
                     }
     
@@ -68,61 +64,58 @@ $(document).ready(function(){
      
      });
 
+function updateDataTableMarca()
+{
+   DT_MARCAS.ajax.reload();
+}
 
-function guardarEmpleado()
+function guardarmarca()
 {
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
-			data:{nombre:$("#txtnombre").val(),apellido_paterno:$("#txtapellido_paterno").val(),apellido_materno:$("#txtapellido_materno").val(),numero_documento_identidad:$("#txtnumero_documento_identidad").val(),pais:$("#txtpais").val()}
+			url:"http://localhost/AngelaMaria/public/api/marcas",
+			data:{nombre:$("#txtnombremarca").val()}
             
 		
         }
 	)
 	.done(function(msg){
        
-		$("#txtnombre").val("");
-		$("#txtapellido_paterno").val("");
-		$("#txtapellido_materno").val("");
-		$("#txtnumero_documento_identidad").val("");
-		$("#txtpais").val("");
+		$("#txtnombremarca").val("");
 
-        $('#mntempleado').modal("hide");
+        $('#mntmarcas').modal("hide");
         
-            
-             
+        
 
-	});
-    updateDataTableEmpleado();	
+	});	
+    
+    updateDataTableMarca();    
 }	
 
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTableEmpleado()
-{
-    DT_EMPLEADO.ajax.reload();
-}
 
 
-function loadnewEmpleado()
+
+function loadnewMarca()
 {
 
-    $("#modalContainer1").load("../../views/mntempleados/new-empleados.php",function(response){
-        $('#mntempleado').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+    $("#modalContainer3").load("../../views/mntmarca/new-marcas.php",function(response){
+        $('#mntmarcas').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
     });
 
 
 }
 
 
-function loadEditEmpleado(id)
+function loadEditMarca(id)
 {
 
-    $("#modalContainer1").load("../../views/mntempleados/edit-empleados.php",function(response){
+    $("#modalContainer3").load("../../views/mntmarca/edit-marcas.php",function(response){
 
-         loadDataEmpleado(id);
+         loadDataMarca(id);
 
     });
 
@@ -131,60 +124,52 @@ function loadEditEmpleado(id)
 
 
 
-function loadDataEmpleado(id)
+function loadDataMarca(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/empleados/"+id
+      url: "http://localhost/AngelaMaria/public/api/marcas/"+id
     })
     .done(function( response ) {
 
         console.log(response)
-        $("#txtId").val(response.data.id);
+        $("#txtIdmarca").val(response.data.id);
         $("#txtNombre").val(response.data.nombre);
-        $("#txtApellido_paterno").val(response.data.apellido_paterno);
-        $("#txtApellido_materno").val(response.data.apellido_materno);
-        $("#txtNumero_documento_identidad").val(response.data.numero_documento_identidad);
-        $("#txtPais").val(response.data.pais);
 
-        $('#mdlEditEmpleado').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+        $('#mdlEditMarca').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
     
       });
     
 }
 
-function EditarEmpleado()
+function EditarMarca()
 {
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
-			data:{id:$("#txtId").val(),nombre:$("#txtNombre").val(),apellido_paterno:$("#txtApellido_paterno").val(),apellido_materno:$("#txtApellido_materno").val(),numero_documento_identidad:$("#txtNumero_documento_identidad").val(),pais:$("#txtPais").val()}
+			url:"http://localhost/AngelaMaria/public/api/marcas",
+			data:{id:$("#txtIdmarca").val(),nombre:$("#txtNombre").val()}
 		}
 	)
 	.done(function( msg ){
 
-		$("#message").text("El empleado se actualizo satisfactoriamente");
 		
 		$("#txtNombre").val("");
-		$("#txtApellido_paterno").val("");
-		$("#txtApellido_materno").val("");
-		$("#txtNumero_documento_identidad").val("");
-		$("#txtPais").val("");
        
       
 	});
-    closeModalEmpleado();
-    updateDataTableEmpleado();	
+    closeModalMarca();
+    updateDataTableMarca();	
 }	
-function closeModalEmpleado()
+
+function closeModalMarca()
 {
-$('#mdlEditEmpleado').modal("hide");
+$('#mdlEditMarca').modal("hide");
 }
 
-function eliminarEmpleado(id){
+function eliminarMarca(id){
     
-    EMPLEADO_TO_DELETE=id;
+    MARCA_TO_DELETE=id;
 
     Swal.fire({
         title: 'Eliminar?',
@@ -200,10 +185,10 @@ function eliminarEmpleado(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost/AngelaMaria/public/api/empleados/"+EMPLEADO_TO_DELETE,
+                url: "http://localhost/AngelaMaria/public/api/marcas/"+MARCA_TO_DELETE,
               })
               .done(function( msg ) {
-                updateDataTableEmpleado();
+                updateDataTableMarca();
                 });
 
                 Swal.fire(
@@ -215,5 +200,3 @@ function eliminarEmpleado(id){
         }
       })
 }
-
-

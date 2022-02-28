@@ -1,12 +1,12 @@
-var DT_EMPLEADO;
-var EMPLEADO_TO_DELETE;
+var DT_PROVEEDORES;
+var PROVEEDORES_TO_DELETE;
 
 $(document).ready(function(){
 
-    DT_EMPLEADO=$('#tablaempleados').DataTable( {
+    DT_PROVEEDORES=$('#tablaproveedores').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/empleados",
+                 url: "http://localhost/AngelaMaria/public/api/proveedores",
                  dataSrc: 'data',
                  cache: true
                  },
@@ -46,16 +46,16 @@ $(document).ready(function(){
                     },
     
                 },   
-                 { data: 'nombre' },
-                 { data: 'apellido_paterno' },
-                 { data: 'apellido_materno' },
-                 { data: 'numero_documento_identidad' },
-                 { data: 'pais' },
+                 { data: 'razon_social' },
+                 { data: 'ruc' },
+                 { data: 'telefono' },
+                 { data: 'correo' },
+                 { data: 'direccion' },
                  {
                     "targets": 3,
                     "render": function (data, type, row) {
                         
-                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditEmpleado('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarEmpleado('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
+                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditProveedores('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarproveedores('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
                       
                     }
     
@@ -69,122 +69,123 @@ $(document).ready(function(){
      });
 
 
-function guardarEmpleado()
+function guardarproveedores()
 {
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
-			data:{nombre:$("#txtnombre").val(),apellido_paterno:$("#txtapellido_paterno").val(),apellido_materno:$("#txtapellido_materno").val(),numero_documento_identidad:$("#txtnumero_documento_identidad").val(),pais:$("#txtpais").val()}
+			url:"http://localhost/AngelaMaria/public/api/proveedores",
+			data:{razon_social:$("#txtrazon_social").val(),ruc:$("#txtruc").val(),telefono:$("#txttelefono").val(),correo:$("#txtcorreo").val(),direccion:$("#txtdireccion").val()}
             
 		
         }
 	)
 	.done(function(msg){
-       
-		$("#txtnombre").val("");
-		$("#txtapellido_paterno").val("");
-		$("#txtapellido_materno").val("");
-		$("#txtnumero_documento_identidad").val("");
-		$("#txtpais").val("");
 
-        $('#mntempleado').modal("hide");
+		//$("#message").text("El empleado se registro satisfactoriamente");
+		    
+       
+		$("#txtrazon_social").val("");
+		$("#txtruc").val("");
+		$("#txttelefono").val("");
+		$("#txtcorreo").val("");
+		$("#txtdireccion").val("");
+
+        $('#mntproveedores').modal("hide");
         
-            
+        
              
 
-	});
-    updateDataTableEmpleado();	
+	});	
+
+    updateDataTableProveedores();
 }	
 
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTableEmpleado()
+function updateDataTableProveedores()
 {
-    DT_EMPLEADO.ajax.reload();
+    DT_PROVEEDORES.ajax.reload();
 }
 
-
-function loadnewEmpleado()
+function loadnewProveedores()
 {
 
-    $("#modalContainer1").load("../../views/mntempleados/new-empleados.php",function(response){
-        $('#mntempleado').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+    $("#modalContainer2").load("../../views/mntproveedores/new-proveedores.php",function(response){
+        $('#mntproveedores').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+    });
+
+
+}
+
+function loadEditProveedores(id)
+{
+
+    $("#modalContainer2").load("../../views/mntproveedores/edit-proveedores.php",function(response){
+
+         loadDataProveedores(id);
+
     });
 
 
 }
 
 
-function loadEditEmpleado(id)
-{
-
-    $("#modalContainer1").load("../../views/mntempleados/edit-empleados.php",function(response){
-
-         loadDataEmpleado(id);
-
-    });
-
-
-}
-
-
-
-function loadDataEmpleado(id)
+function loadDataProveedores(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/empleados/"+id
+      url: "http://localhost/AngelaMaria/public/api/proveedores/"+id
     })
     .done(function( response ) {
 
         console.log(response)
-        $("#txtId").val(response.data.id);
-        $("#txtNombre").val(response.data.nombre);
-        $("#txtApellido_paterno").val(response.data.apellido_paterno);
-        $("#txtApellido_materno").val(response.data.apellido_materno);
-        $("#txtNumero_documento_identidad").val(response.data.numero_documento_identidad);
-        $("#txtPais").val(response.data.pais);
+        $("#txtIdproveedores").val(response.data.id);
+        $("#txtRazon_social").val(response.data.razon_social);
+        $("#txtRuc").val(response.data.ruc);
+        $("#txtTelefono").val(response.data.telefono);
+        $("#txtCorreo").val(response.data.correo);
+        $("#txtDireccion").val(response.data.direccion);
 
-        $('#mdlEditEmpleado').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
+        $('#mntEditProveedores').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
     
       });
     
 }
 
-function EditarEmpleado()
+function EditarProveedores()
 {
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
-			data:{id:$("#txtId").val(),nombre:$("#txtNombre").val(),apellido_paterno:$("#txtApellido_paterno").val(),apellido_materno:$("#txtApellido_materno").val(),numero_documento_identidad:$("#txtNumero_documento_identidad").val(),pais:$("#txtPais").val()}
+			url:"http://localhost/AngelaMaria/public/api/proveedores",
+			data:{id:$("#txtIdproveedores").val(),razon_social:$("#txtRazon_social").val(),ruc:$("#txtRuc").val(),telefono:$("#txtTelefono").val(),correo:$("#txtCorreo").val(),direccion:$("#txtDireccion").val()}
 		}
 	)
 	.done(function( msg ){
 
 		$("#message").text("El empleado se actualizo satisfactoriamente");
 		
-		$("#txtNombre").val("");
-		$("#txtApellido_paterno").val("");
-		$("#txtApellido_materno").val("");
-		$("#txtNumero_documento_identidad").val("");
-		$("#txtPais").val("");
+		$("#txtRazon_social").val("");
+		$("#txtRuc").val("");
+		$("#txtTelefono").val("");
+		$("#txtCorreo").val("");
+		$("#txtDireccion").val("");
        
       
 	});
-    closeModalEmpleado();
-    updateDataTableEmpleado();	
+    closeModalProveedores();
+    updateDataTableProveedores();	
 }	
-function closeModalEmpleado()
+function closeModalProveedores()
 {
-$('#mdlEditEmpleado').modal("hide");
+$('#mntEditProveedores').modal("hide");
 }
 
-function eliminarEmpleado(id){
+function eliminarproveedores(id){
     
-    EMPLEADO_TO_DELETE=id;
+    PROVEEDORES_TO_DELETE=id;
 
     Swal.fire({
         title: 'Eliminar?',
@@ -200,10 +201,10 @@ function eliminarEmpleado(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost/AngelaMaria/public/api/empleados/"+EMPLEADO_TO_DELETE,
+                url: "http://localhost/AngelaMaria/public/api/proveedores/"+PROVEEDORES_TO_DELETE,
               })
               .done(function( msg ) {
-                updateDataTableEmpleado();
+               updateDataTableProveedores();
                 });
 
                 Swal.fire(
@@ -215,5 +216,4 @@ function eliminarEmpleado(id){
         }
       })
 }
-
 

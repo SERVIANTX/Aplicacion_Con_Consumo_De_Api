@@ -38,8 +38,8 @@
 
 <!-- Llamando a los Scripts de controladores -->
 <script type="text/javascript" src="../../App/empleados/empleadosController.js"></script>
-
-
+<script type="text/javascript" src="../../App/proveedores/proveedoresController.js"></script>
+<script type="text/javascript" src="../../App/marcas/marcasController.js"></script>
 
 
 
