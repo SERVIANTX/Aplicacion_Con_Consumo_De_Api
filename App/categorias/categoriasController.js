@@ -71,15 +71,15 @@ function guardar() {
             method: "POST",
             url: "http://localhost/AngelaMaria/public/api/categorias",
             data: {
-                nombre_categoria: $("#txtNombre_categoria").val(),
-                estado: $("#txtEstado").val(),
+                nombre_categoria: $("#txtnombre_categoria").val(),
+                estado: $("#txtestado").val(),
             }
         })
         .done(function (msg) {
 
             //$("#message").text("El empleado se registro satisfactoriamente");
-            $("#txtNombre_categoria").val("");
-            $("#txtEstado").val("");
+            $("#txtnombre_categoria").val("");
+            $("#txtestado").val("");
 
             $('#mdlcategoria').modal("hide");
 

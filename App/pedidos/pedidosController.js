@@ -83,23 +83,23 @@ function guardar() {
             method: "POST",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
             data: {
-                empleado: $("#txtEmpleado").val(),
-                cliente: $("#txtCliente").val(),
-                direccion: $("#txtDireccion").val(),
-                fecha_pedido: $("#txtFecha_pedido").val(),
-                fecha_envio: $("#txtFecha_envio").val(),
-                estado: $("#txtEstado").val(),
+                empleado: $("#txtempleado").val(),
+                cliente: $("#txtcliente").val(),
+                direccion: $("#txtdireccion").val(),
+                fecha_pedido: $("#txtfecha_pedido").val(),
+                fecha_envio: $("#txtfecha_envio").val(),
+                estado: $("#txtestado").val(),
             }
         })
         .done(function (msg) {
 
             //$("#message").text("El empleado se registro satisfactoriamente");
-            $("#txtEmpleado").val("");
-            $("#txtCliente").val("");
-            $("#txtDireccion").val("");
-            $("#txtFecha_pedido").val("");
-            $("#txtFecha_envio").val("");
-            $("#txtEstado").val("");
+            $("#txtempleado").val("");
+            $("#txtcliente").val("");
+            $("#txtdireccion").val("");
+            $("#txtfecha_pedido").val("");
+            $("#txtfecha_envio").val("");
+            $("#txtestado").val("");
 
             $('#mdlpedido').modal("hide");
 
