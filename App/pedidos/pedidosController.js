@@ -67,7 +67,7 @@ $(document).ready(function () {
                 "targets": 3,
                 "render": function (data, type, row) {
 
-                    return "<button class=\"btn btn-outline-success\" onclick=\"loadEditPedido('" + row.id + "')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminar('" + row.id + "');\"><i class=\"bx bx-trash\"></i></button>";
+                    return "<button class=\"btn btn-outline-success\" onclick=\"loadEditPedido('" + row.id + "')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarPedido('" + row.id + "');\"><i class=\"bx bx-trash\"></i></button>";
                 }
             },
         ]
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
 
 
-function guardar() {
+function guardarPedido() {
     $.ajax({
             method: "POST",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
@@ -103,14 +103,14 @@ function guardar() {
 
             $('#mdlpedido').modal("hide");
 
-            updateDataTable();
+            updateDataTablePedido();
         });
 }
 
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTable() {
+function updateDataTablePedido() {
     DT_PEDIDOS.ajax.reload();
 }
 
@@ -178,7 +178,7 @@ function loadDataPedido(id) {
 
 
 
-function Editar() {
+function EditarPedido() {
     $.ajax({
             method: "PUT",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
@@ -206,7 +206,7 @@ function Editar() {
 
         });
     closeModal();
-    updateDataTable();
+    updateDataTablePedido();
 }
 
 
@@ -219,7 +219,7 @@ function closeModal() {
 
 
 
-function eliminar(id) {
+function eliminarPedido(id) {
 
     PEDIDOS_TO_DELETE = id;
 
@@ -240,7 +240,7 @@ function eliminar(id) {
                     url: "http://localhost/AngelaMaria/public/api/pedidos/" + PEDIDOS_TO_DELETE,
                 })
                 .done(function (msg) {
-                    updateDataTable();
+                    updateDataTablePedido();
                 });
 
             Swal.fire(
