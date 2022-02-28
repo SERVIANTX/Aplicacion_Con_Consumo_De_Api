@@ -6,7 +6,7 @@ $(document).ready(function(){
     DT_EMPLEADO=$('#tablaempleados').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/empleados",
+                 url: "http://localhost:8080/AngelaMaria/public/api/empleados",
                  dataSrc: 'data',
                  cache: true
                  },

@@ -6,7 +6,7 @@ $(document).ready(function () {
     DT_CATEGORIAS = $('#tablacategorias').DataTable({
         "ajax": {
             type: 'get',
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
             dataSrc: 'data',
             cache: true
         },
@@ -69,7 +69,7 @@ $(document).ready(function () {
 function guardar() {
     $.ajax({
             method: "POST",
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
             data: {
                 nombre_categoria: $("#txtnombre_categoria").val(),
                 estado: $("#txtestado").val(),
@@ -131,7 +131,7 @@ function loadnewCategoria() {
 function loadDataCategoria(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/categorias/" + id
+            url: "http://localhost:8080/AngelaMaria/public/api/categorias/" + id
         })
         .done(function (response) {
 
@@ -157,7 +157,7 @@ function loadDataCategoria(id) {
 function Editar() {
     $.ajax({
             method: "PUT",
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
             data: {
                 id: $("#txtId").val(),
                 nombre_categoria: $("#txtNombre_categoria").val(),
@@ -206,7 +206,7 @@ function eliminar(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "http://localhost/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
+                    url: "http://localhost:8080/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
                 })
                 .done(function (msg) {
                     updateDataTable();

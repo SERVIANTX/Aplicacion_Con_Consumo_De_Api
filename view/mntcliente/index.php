@@ -32,12 +32,12 @@
 
         <!-- Breadcrumb Area -->
         <div class="breadcrumb-area">
-            <h1>Mnt productos</h1>
+            <h1>Mnt Clientes</h1>
 
             <ol class="breadcrumb">
                 <li class="item"><a href="../home"><i class='bx bx-home-alt'></i></a></li>
 
-                <li class="item">Mantenimiento de Productos</li>
+                <li class="item">Mantenimiento de Clientes</li>
 
             </ol>
         </div>
@@ -48,21 +48,21 @@
 
         <div class="card mb-30">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3>Listado de Producto</h3>
+                <h3>Listado de Clientes</h3>
                 <br>
-                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewEmpleado()" >Nuevo</button>
+                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewCliente()" >Nuevo</button>
             </div>
 
             <div class="card-body">
-                <table id="tablaproductos" name="tablaproductos" class="table display responsive nowrap">
+                <table id="tablaclientes" name="tablaclientes" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creación</th>
-                            <th>Producto</th>
-                            <th>Descripcion</th>
-                            <th>Stock</th>
-                            <th>Precio Venta</th>
-                            <th>Precio Compra</th>
-                            <th>Lote</th>
+                            <th>Cliente</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
+                            <th>Direccion</th>
+                            <th>Documento de Identidad</th>
+                            <th>Correo</th>
                             <th>Acciones</th>
                     </thead>
                     <tbody>
@@ -74,11 +74,11 @@
 
         <!-- Modal Guardar Empleado -->
         <?php
-            require_once("new-productos.php")
+            require_once("new-clientes.php")
             ?>
          <!-- Modal Edit Empleado -->
          <?php
-            require_once("edit-productos.php")
+            require_once("edit-clientes.php")
             ?>
 
 

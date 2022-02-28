@@ -44,6 +44,14 @@
 <script type="text/javascript" src="../../App/categorias/categoriasController.js"></script>
 <script type="text/javascript" src="../../App/pedidos/pedidosController.js"></script>
 
+ <!-- Llamando a los Scripts de controladores producto -->
+ <script type="text/javascript" src="../../App/productos/productosController.js"></script>
+<!-- Llamando a los Scripts de controladores clientes -->
+<script type="text/javascript" src="../../App/clientes/clientesController.js"></script>
+
+
+
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
 
 <!-- - - - - - CDN para formatear Fecha - - - - - -->

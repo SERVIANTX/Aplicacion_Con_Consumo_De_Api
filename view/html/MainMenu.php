@@ -40,6 +40,13 @@
             </li>
 
             <li class="nav-item">
+                <a href="../mntcliente" class="nav-link">
+                    <span class="icon"><i class='bx bx-badge-check'></i></span>
+                    <span class="menu-title">Mnt Cliente</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="../mntcategorias" class="nav-link">
                     <span class="icon"><i class='bx bx-badge-check'></i></span>
                     <span class="menu-title">Mnt Categorias</span>
@@ -63,7 +70,7 @@
             <li class="nav-item">
                 <a href="../mntproveedores" class="nav-link">
                     <span class="icon"><i class='bx bx-calendar'></i></span>
-                    <span class="menu-title">Mnt Provedor</span>
+                    <span class="menu-title">Mnt Proveedor</span>
                 </a>
             </li>
 

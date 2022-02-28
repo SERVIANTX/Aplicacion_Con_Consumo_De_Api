@@ -6,7 +6,7 @@ $(document).ready(function () {
     DT_PEDIDOS = $('#tablapedidos').DataTable({
         "ajax": {
             type: 'get',
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
+            url: "http://localhost:8080/AngelaMaria/public/api/pedidos",
             dataSrc: 'data',
             cache: true
         },
@@ -81,7 +81,7 @@ $(document).ready(function () {
 function guardar() {
     $.ajax({
             method: "POST",
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
+            url: "http://localhost:8080/AngelaMaria/public/api/pedidos",
             data: {
                 empleado: $("#txtempleado").val(),
                 cliente: $("#txtcliente").val(),
@@ -151,7 +151,7 @@ function loadnewPedido() {
 function loadDataPedido(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/pedidos/" + id
+            url: "http://localhost:8080/AngelaMaria/public/api/pedidos/" + id
         })
         .done(function (response) {
 
@@ -181,7 +181,7 @@ function loadDataPedido(id) {
 function Editar() {
     $.ajax({
             method: "PUT",
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
+            url: "http://localhost:8080/AngelaMaria/public/api/pedidos",
             data: {
                 id: $("#txtId").val(),
                 empleado: $("#txtEmpleado").val(),
@@ -237,7 +237,7 @@ function eliminar(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "http://localhost/AngelaMaria/public/api/pedidos/" + PEDIDOS_TO_DELETE,
+                    url: "http://localhost:8080/AngelaMaria/public/api/pedidos/" + PEDIDOS_TO_DELETE,
                 })
                 .done(function (msg) {
                     updateDataTable();
