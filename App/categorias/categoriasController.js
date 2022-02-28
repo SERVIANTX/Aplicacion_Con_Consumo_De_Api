@@ -6,7 +6,7 @@ $(document).ready(function () {
     DT_CATEGORIAS = $('#tablacategorias').DataTable({
         "ajax": {
             type: 'get',
-            url: "#",
+            url: "http://localhost/AngelaMaria/public/api/categorias",
             dataSrc: 'data',
             cache: true
         },
@@ -69,7 +69,7 @@ $(document).ready(function () {
 function guardar() {
     $.ajax({
             method: "POST",
-            url: "#",
+            url: "http://localhost/AngelaMaria/public/api/categorias",
             data: {
                 nombre_categoria: $("#txtNombre_categoria").val(),
                 estado: $("#txtEstado").val(),
@@ -206,7 +206,7 @@ function eliminar(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "" + CATEGORIA_TO_DELETE,
+                    url: "http://localhost/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
                 })
                 .done(function (msg) {
                     updateDataTable();
