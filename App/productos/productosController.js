@@ -8,7 +8,7 @@ $(document).ready(function(){
     DT_PRODUCTOS=$('#tablaproductos').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost:8080/AngelaMaria/public/api/productos",
+                 url: "http://localhost/AngelaMaria/public/api/productos",
                  dataSrc: 'data',
                  cache: true
                  },
@@ -58,7 +58,7 @@ $(document).ready(function(){
                     "targets": 3,
                     "render": function (data, type, row) {
                         
-                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditProducto('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminar('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
+                        return "<button class=\"btn btn-outline-success\" onclick=\"loadEditProducto('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarProducto('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
                       
                     }
     
@@ -83,7 +83,7 @@ function guardarproducto()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost:8080/AngelaMaria/public/api/productos",
+			url:"http://localhost/AngelaMaria/public/api/productos",
 			data:{nombre_producto:$("#txtnombreproducto").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
             
 		
@@ -103,7 +103,7 @@ function guardarproducto()
 
         $('#mntproducto').modal("hide");
         
-             updateDataTable();
+        updateDataTableProductos();
              
 
 	});	
@@ -115,7 +115,7 @@ function guardarproducto()
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTable()
+function updateDataTableProductos()
 {
     DT_PRODUCTOS.ajax.reload();
 }
@@ -161,7 +161,7 @@ function loadDataProducto(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost:8080/AngelaMaria/public/api/productos/"+id
+      url: "http://localhost/AngelaMaria/public/api/productos/"+id
     })
     .done(function( response ) {
 
@@ -187,12 +187,12 @@ function loadDataProducto(id)
 //////////ques actuliza los dato en la bd
 
 
-function Editar()
+function EditarProducto()
 {
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost:8080/AngelaMaria/public/api/productos",
+			url:"http://localhost/AngelaMaria/public/api/productos",
 			data:{id:$("#txtId").val(),nombre_producto:$("#txtNombreproducto").val(),descripcion:$("#txtDescripcion").val(),stock:$("#txtStock").val(),precio_venta:$("#txtPrecioventa").val(),precio_compra:$("#txtPreciocompra").val(),lote:$("#txtLote").val()}
 		}
 	)
@@ -209,8 +209,8 @@ function Editar()
        
       
 	});
-    closeModal();
-    updateDataTable();	
+    closeModalProducto();
+    updateDataTableProductos();	
 }	
 
 
@@ -218,7 +218,7 @@ function Editar()
 
 
 
-function closeModal()
+function closeModalProducto()
 {
 $('#mdlEditProducto').modal("hide");
 }
@@ -242,7 +242,7 @@ $('#mdlEditProducto').modal("hide");
 
 ////esto es eliminar undato de la tabñla
 
-function eliminar(id){
+function eliminarProducto(id){
     
     PRODUCTO_TO_DELETE=id;
 
@@ -260,10 +260,10 @@ function eliminar(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost:8080/AngelaMaria/public/api/productos/"+PRODUCTO_TO_DELETE,
+                url: "http://localhost/AngelaMaria/public/api/productos/"+PRODUCTO_TO_DELETE,
               })
               .done(function( msg ) {
-              updateDataTable();
+                updateDataTableProductos();
                 });
 
                 Swal.fire(

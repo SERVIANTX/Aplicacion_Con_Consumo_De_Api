@@ -8,7 +8,7 @@ $(document).ready(function(){
     DT_CLIENTES=$('#tablaclientes').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost:8080/AngelaMaria/public/api/clientes",
+                 url: "http://localhost/AngelaMaria/public/api/clientes",
                  dataSrc: 'data',
                  cache: true
                  },
@@ -83,7 +83,7 @@ function guardarcliente()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost:8080/AngelaMaria/public/api/clientes",
+			url:"http://localhost/AngelaMaria/public/api/clientes",
 			data:{nombre:$("#txtnombrecliente").val(),apellido_paterno:$("#txtapellidopaterno").val(),apellido_materno:$("#txtapellidomaterno").val(),direccion:$("#txtdireccion").val(),numero_documento_identidad:$("#txtdocumentoidentitad").val(),correo:$("#txtcorreo").val()}
             
 		
@@ -161,7 +161,7 @@ function loadDataCliente(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost:8080/AngelaMaria/public/api/clientes/"+id
+      url: "http://localhost/AngelaMaria/public/api/clientes/"+id
     })
     .done(function( response ) {
 
@@ -192,7 +192,7 @@ function Editar()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost:8080/AngelaMaria/public/api/clientes",
+			url:"http://localhost/AngelaMaria/public/api/clientes",
 			data:{id:$("#txtId").val(),nombre:$("#txtNombrecliente").val(),apellido_paterno:$("#txtApellidopaterno").val(),apellido_materno:$("#txtApellidomaterno").val(),direccion:$("#txtDireccion").val(),numero_documento_identidad:$("#txtDocumentoidentidad").val(),correo:$("#txtCorreo").val()}
 		}
 	)
@@ -260,7 +260,7 @@ function eliminar(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost:8080/AngelaMaria/public/api/clientes/"+CLIENTE_TO_DELETE,
+                url: "http://localhost/AngelaMaria/public/api/clientes/"+CLIENTE_TO_DELETE,
               })
               .done(function( msg ) {
               updateDataTable();
