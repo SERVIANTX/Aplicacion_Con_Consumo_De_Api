@@ -6,7 +6,7 @@ $(document).ready(function(){
     DT_PRODUCTOS=$('#tablaempleados').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost:8080/AngelaMaria/public/api/empleados",
+                 url: "http://localhost/AngelaMaria/public/api/empleados",
                  dataSrc: 'data',
                  cache: true
                  },
@@ -74,7 +74,7 @@ function guardar()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost:8080/AngelaMaria/public/api/empleados",
+			url:"http://localhost/AngelaMaria/public/api/empleados",
 			data:{nombre:$("#txtnombre").val(),apellido_paterno:$("#txtapellido_paterno").val(),apellido_materno:$("#txtapellido_materno").val(),numero_documento_identidad:$("#txtnumero_documento_identidad").val(),pais:$("#txtpais").val()}
             
 		
@@ -133,7 +133,7 @@ function loadDataProducto(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost:8080/AngelaMaria/public/api/empleados/"+id
+      url: "http://localhost/AngelaMaria/public/api/empleados/"+id
     })
     .done(function( response ) {
 
@@ -156,7 +156,7 @@ function Editar()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost:8080/AngelaMaria/public/api/empleados",
+			url:"http://localhost/AngelaMaria/public/api/empleados",
 			data:{id:$("#txtId").val(),nombre:$("#txtNombre").val(),apellido_paterno:$("#txtApellido_paterno").val(),apellido_materno:$("#txtApellido_materno").val(),numero_documento_identidad:$("#txtNumero_documento_identidad").val(),pais:$("#txtPais").val()}
 		}
 	)
@@ -211,7 +211,7 @@ function eliminar(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost:8080/AngelaMaria/public/api/empleados/"+PRODUCTO_TO_DELETE,
+                url: "http://localhost/AngelaMaria/public/api/empleados/"+PRODUCTO_TO_DELETE,
               })
               .done(function( msg ) {
               updateDataTable();
