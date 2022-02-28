@@ -50,7 +50,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3>Listado de Empleados</h3>
                 <br>
-                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewEmpleado()" >Nuevo</button>
+                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewEmpleados()" >Nuevo</button>
             </div>
 
             <div class="card-body">

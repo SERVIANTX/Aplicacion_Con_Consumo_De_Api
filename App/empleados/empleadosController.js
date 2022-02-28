@@ -106,7 +106,7 @@ function updateDataTableEmpleado()
 }
 
 
-function loadnewEmpleado()
+function loadnewEmpleados()
 {
 
     $("#modalContainer1").load("../../views/mntempleados/new-empleados.php",function(response){
