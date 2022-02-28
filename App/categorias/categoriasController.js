@@ -6,7 +6,7 @@ $(document).ready(function () {
     DT_CATEGORIAS = $('#tablacategorias').DataTable({
         "ajax": {
             type: 'get',
-            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
+            url: "http://localhost/AngelaMaria/public/api/categorias",
             dataSrc: 'data',
             cache: true
         },
@@ -55,7 +55,7 @@ $(document).ready(function () {
                 "targets": 3,
                 "render": function (data, type, row) {
 
-                    return "<button class=\"btn btn-outline-success\" onclick=\"loadEditCategoria('" + row.id + "')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminar('" + row.id + "');\"><i class=\"bx bx-trash\"></i></button>";
+                    return "<button class=\"btn btn-outline-success\" onclick=\"loadEditCategoria('" + row.id + "')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarCategoria('" + row.id + "');\"><i class=\"bx bx-trash\"></i></button>";
                 }
             },
         ]
@@ -66,10 +66,10 @@ $(document).ready(function () {
 
 
 
-function guardar() {
+function guardarCategorias() {
     $.ajax({
             method: "POST",
-            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
+            url: "http://localhost/AngelaMaria/public/api/categorias",
             data: {
                 nombre_categoria: $("#txtnombre_categoria").val(),
                 estado: $("#txtestado").val(),
@@ -83,14 +83,14 @@ function guardar() {
 
             $('#mdlcategoria').modal("hide");
 
-            updateDataTable();
+            updateDataTableCategorias();
         });
 }
 
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTable() {
+function updateDataTableCategorias() {
     DT_CATEGORIAS.ajax.reload();
 }
 
@@ -131,7 +131,7 @@ function loadnewCategoria() {
 function loadDataCategoria(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost:8080/AngelaMaria/public/api/categorias/" + id
+            url: "http://localhost/AngelaMaria/public/api/categorias/" + id
         })
         .done(function (response) {
 
@@ -154,10 +154,10 @@ function loadDataCategoria(id) {
 
 
 
-function Editar() {
+function EditarCategoria() {
     $.ajax({
             method: "PUT",
-            url: "http://localhost:8080/AngelaMaria/public/api/categorias",
+            url: "http://localhost/AngelaMaria/public/api/categorias",
             data: {
                 id: $("#txtId").val(),
                 nombre_categoria: $("#txtNombre_categoria").val(),
@@ -174,21 +174,21 @@ function Editar() {
 
 
         });
-    closeModal();
-    updateDataTable();
+        closeModalCategoria();
+    updateDataTableCategorias();
 }
 
 
 
 
-function closeModal() {
+function closeModalCategoria() {
     $('#mdlEditCategoria').modal("hide");
 }
 
 
 
 
-function eliminar(id) {
+function eliminarCategoria(id) {
 
     CATEGORIA_TO_DELETE = id;
 
@@ -206,10 +206,10 @@ function eliminar(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "http://localhost:8080/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
+                    url: "http://localhost/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
                 })
                 .done(function (msg) {
-                    updateDataTable();
+                    updateDataTableCategorias();
                 });
 
             Swal.fire(
