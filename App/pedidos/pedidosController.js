@@ -205,14 +205,14 @@ function EditarPedido() {
 
 
         });
-    closeModal();
+    closeModalPedido();
     updateDataTablePedido();
 }
 
 
 
 
-function closeModal() {
+function closeModalPedido() {
     $('#mdlEditPedido').modal("hide");
 }
 
