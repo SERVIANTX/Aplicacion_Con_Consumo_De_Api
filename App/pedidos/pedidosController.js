@@ -14,12 +14,12 @@ $(document).ready(function () {
         /* Cambiar el lenguaje de DataTable */
         "language": {
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sLengthMenu": "Mostrar MENU registros",
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando registros del  _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfo": "Mostrando registros del  START al END de un total de TOTAL registros",
             "sInfoEmpty": "Mostrando registros del 0 a 0 de un total de 0 registros",
-            "sInfoFiltered": "(Filtro de un total de _MAX_ registros)",
+            "sInfoFiltered": "(Filtro de un total de MAX registros)",
             "sInfoPostFix": "",
             "sSearch": "Buscar:",
             "sUrl": "",
@@ -61,10 +61,20 @@ $(document).ready(function () {
                 data: 'fecha_envio'
             },
             {
-                data: 'estado'
+                data: 'estado',
+                "render": function (data, type, row) 
+                {
+                    if(data == "No iniciado")
+                        return "<span class=\"badge badge-pill badge-danger\">" + data + "</span>";
+                    else if(data == "En proceso")
+                        return "<span class=\"badge badge-pill badge-warning\">" + data + "</span>";
+                    else if (data == "Finalizado")
+                        return "<span class=\"badge badge-pill badge-success\">" + data + "</span>";
+                    
+                },
             },
             {
-                "targets": 3,
+                "targets": 8,
                 "render": function (data, type, row) {
 
                     return "<button class=\"btn btn-outline-success\" onclick=\"loadEditPedido('" + row.id + "')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarPedido('" + row.id + "');\"><i class=\"bx bx-trash\"></i></button>";
@@ -178,7 +188,7 @@ function loadDataPedido(id) {
 
 
 
-function EditarPedido() {
+function EditarPedido2() {
     $.ajax({
             method: "PUT",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
@@ -193,7 +203,6 @@ function EditarPedido() {
             }
         })
         .done(function (msg) {
-
             $("#message").text("El pedido se actualizo satisfactoriamente");
 
             $("#txtEmpleado").val("");

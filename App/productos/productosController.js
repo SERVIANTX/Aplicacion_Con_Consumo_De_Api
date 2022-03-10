@@ -47,15 +47,41 @@ $(document).ready(function(){
                         return moment(row.created_at).format('DD/MM/YYYY HH:mm:ss');
                     },
     
-                },   
+                }, 
+                 { data: 'imagen',
+                        "render":function (data, type, row){
+                        return "<img class=\"rounded-circle\" src='"+ data +"' width=\"60\" height=\"25\" />";
+                 },
+                },  
                  { data: 'nombre_producto' },
+                 { 
+                     "targets": 4,
+                     "render": function ( data, type, row ) {
+                    
+                        if(row.categoria)
+                            return row.categoria.nombre_categoria;
+                        else
+                            return "";
+                    },
+                   
+                 },
+                 { data: 'marca_id', 
+                     "targets": 5,
+                     "render": function ( data, type, row ) {
+                    
+                        if(row.marca)
+                            return row.marca.nombre;
+                        else
+                            return "";
+                    },
+                },
                  { data: 'descripcion' },
                  { data: 'stock' },
                  { data: 'precio_venta' },
                  { data: 'precio_compra' },
                  { data: 'lote' },
                  {
-                    "targets": 3,
+                    "targets": 11,
                     "render": function (data, type, row) {
                         
                         return "<button class=\"btn btn-outline-success\" onclick=\"loadEditProducto('"+row.id+"')\"><i class=\"bx bx-edit\"></i></button>  &nbsp  <button class=\"btn btn-outline-danger\" onclick=\"eliminarProducto('"+row.id+"');\"><i class=\"bx bx-trash\"></i></button>";
@@ -84,17 +110,18 @@ function guardarproducto()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/productos",
-			data:{nombre_producto:$("#txtnombreproducto").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
-            
-		
+			data:{imagen:$("#txtimagenproducto").val(),nombre_producto:$("#txtnombreproducto").val(),categoria_id:$("#txtcategoriaproducto").val(),marca_id:$("#txtmarcaproducto").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
+
         }
 	)
 	.done(function(msg){
 
 		//$("#message").text("El empleado se registro satisfactoriamente");
 		    
-       
+        $("#txtimagenproducto").val("");
 		$("#txtnombreproducto").val("");
+        $("#txtcategoriaproducto").val("");
+        $("#txtmarcaproducto").val("");
 		$("#txtdescripcion").val("");
 		$("#txtstock").val("");
 		$("#txtprecioventa").val("");
@@ -166,8 +193,12 @@ function loadDataProducto(id)
     .done(function( response ) {
 
         console.log(response)
+
         $("#txtId").val(response.data.id);
+        $("#txtImagenproducto").val(response.data.imagen);
         $("#txtNombreproducto").val(response.data.nombre_producto);
+        $("#txtCategoriaproducto").val(response.data.categoria_id);
+        $("#txtMarcaproducto").val(response.data.marca_id);
         $("#txtDescripcion").val(response.data.descripcion);
         $("#txtStock").val(response.data.stock);
         $("#txtPrecioventa").val(response.data.precio_venta);
@@ -193,14 +224,17 @@ function EditarProducto()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/productos",
-			data:{id:$("#txtId").val(),nombre_producto:$("#txtNombreproducto").val(),descripcion:$("#txtDescripcion").val(),stock:$("#txtStock").val(),precio_venta:$("#txtPrecioventa").val(),precio_compra:$("#txtPreciocompra").val(),lote:$("#txtLote").val()}
+			data:{id:$("#txtId").val(),imagen:$("#txtImagenproducto").val(),nombre_producto:$("#txtNombreproducto").val(),categoria_id:$("#txtCategoriaproducto").val(),marca_id:$("#txtMarcaproducto").val(),descripcion:$("#txtDescripcion").val(),stock:$("#txtStock").val(),precio_venta:$("#txtPrecioventa").val(),precio_compra:$("#txtPreciocompra").val(),lote:$("#txtLote").val()}
 		}
 	)
 	.done(function( msg ){
 
 		$("#message").text("El producto se actualizo satisfactoriamente");
 		
-		$("#txtNombreproducto").val("");
+		$("#txtImagenproducto").val("");
+        $("#txtNombreproducto").val("");
+        $("#txtCategoriaproducto").val("");
+        $("#txtMarcaproducto").val("");
 		$("#txtDescripcion").val("");
 		$("#txtStock").val("");
 		$("#txtPrecioventa").val("");

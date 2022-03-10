@@ -57,7 +57,10 @@
                 <table id="tablaproductos" name="tablaproductos" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creación</th>
+                            <th>Imagen</th>
                             <th>Producto</th>
+                            <th>Categoria</th>
+                            <th>Marca</th>
                             <th>Descripcion</th>
                             <th>Stock</th>
                             <th>Precio Venta</th>

@@ -11,12 +11,22 @@
                 </div>
                 <div class="modal-body">
 
-
+                    <div class="form-group">
+                        <label>Imagen del Producto</label>
+                        <input type="text" id="txtimagenproducto" name="txtimagenproducto" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label>Nombre del Producto</label>
                         <input type="text" id="txtnombreproducto" name="txtnombreproducto" class="form-control" required>
                     </div>
-
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <input type="text" id="txtcategoriaproducto" name="txtcategoriaproducto" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <input type="text" id="txtmarcaproducto" name="txtmarcaproducto" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label>Descripcion</label>
                         <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control" required>

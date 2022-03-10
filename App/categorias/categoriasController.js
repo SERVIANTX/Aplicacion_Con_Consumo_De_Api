@@ -45,11 +45,22 @@ $(document).ready(function () {
                 },
 
             },
-            {
-                data: 'nombre_categoria'
+           {
+                data: 'nombre_categoria',
+                
+  
+                               
             },
             {
-                data: 'estado'
+                data: 'estado',
+                "render": function (data, type, row) {
+                    
+                    if(data == "Activo")
+                        return "<span class=\"badge badge-pill badge-success\">" + data + "</span>";
+                    else
+                        return "<span class=\"badge badge-pill badge-danger\">" + data + "</span>";
+                    
+                },
             },
             {
                 "targets": 3,
