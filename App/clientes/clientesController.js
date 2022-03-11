@@ -9,6 +9,7 @@ $(document).ready(function(){
              "ajax":{
                  type: 'get',
                  url: "http://localhost/AngelaMaria/public/api/clientes",
+                 headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
                  },
@@ -84,6 +85,7 @@ function guardarcliente()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/clientes",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{nombre:$("#txtnombrecliente").val(),apellido_paterno:$("#txtapellidopaterno").val(),apellido_materno:$("#txtapellidomaterno").val(),direccion:$("#txtdireccion").val(),numero_documento_identidad:$("#txtdocumentoidentitad").val(),correo:$("#txtcorreo").val()}
             
 		
@@ -161,7 +163,9 @@ function loadDataCliente(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/clientes/"+id
+      url: "http://localhost/AngelaMaria/public/api/clientes/"+id,
+      
+      headers: {"Authorization": "Bearer "+_token},
     })
     .done(function( response ) {
 
@@ -193,6 +197,7 @@ function Editar()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/clientes",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtId").val(),nombre:$("#txtNombrecliente").val(),apellido_paterno:$("#txtApellidopaterno").val(),apellido_materno:$("#txtApellidomaterno").val(),direccion:$("#txtDireccion").val(),numero_documento_identidad:$("#txtDocumentoidentidad").val(),correo:$("#txtCorreo").val()}
 		}
 	)
@@ -261,6 +266,7 @@ function eliminar(id){
             $.ajax({
                 method: "delete",
                 url: "http://localhost/AngelaMaria/public/api/clientes/"+CLIENTE_TO_DELETE,
+                headers: {"Authorization": "Bearer "+_token},
               })
               .done(function( msg ) {
               updateDataTable();
