@@ -1,3 +1,8 @@
+//js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
 var DT_PROVEEDORES;
 var PROVEEDORES_TO_DELETE;
 
@@ -7,6 +12,7 @@ $(document).ready(function(){
              "ajax":{
                  type: 'get',
                  url: "http://localhost/AngelaMaria/public/api/proveedores",
+                 headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
                  },
@@ -75,6 +81,7 @@ function guardarproveedores()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/proveedores",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{razon_social:$("#txtrazon_social").val(),ruc:$("#txtruc").val(),telefono:$("#txttelefono").val(),correo:$("#txtcorreo").val(),direccion:$("#txtdireccion").val()}
             
 		
@@ -136,7 +143,8 @@ function loadDataProveedores(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/proveedores/"+id
+      url: "http://localhost/AngelaMaria/public/api/proveedores/"+id,
+      headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
 
@@ -160,6 +168,7 @@ function EditarProveedores()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/proveedores",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtIdproveedores").val(),razon_social:$("#txtRazon_social").val(),ruc:$("#txtRuc").val(),telefono:$("#txtTelefono").val(),correo:$("#txtCorreo").val(),direccion:$("#txtDireccion").val()}
 		}
 	)
@@ -202,6 +211,7 @@ function eliminarproveedores(id){
             $.ajax({
                 method: "delete",
                 url: "http://localhost/AngelaMaria/public/api/proveedores/"+PROVEEDORES_TO_DELETE,
+                headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {
                updateDataTableProveedores();

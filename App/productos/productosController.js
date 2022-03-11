@@ -1,4 +1,8 @@
 //js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
 
 var DT_PRODUCTOS;
 var PRODUCTO_TO_DELETE;
@@ -9,6 +13,7 @@ $(document).ready(function(){
              "ajax":{
                  type: 'get',
                  url: "http://localhost/AngelaMaria/public/api/productos",
+                 headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
                  },
@@ -110,6 +115,7 @@ function guardarproducto()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/productos",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{imagen:$("#txtimagenproducto").val(),nombre_producto:$("#txtnombreproducto").val(),categoria_id:$("#txtcategoriaproducto").val(),marca_id:$("#txtmarcaproducto").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
 
         }
@@ -188,7 +194,8 @@ function loadDataProducto(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/productos/"+id
+      url: "http://localhost/AngelaMaria/public/api/productos/"+id,
+      headers: {"Authorization": "Bearer "+_token},
     })
     .done(function( response ) {
 
@@ -224,6 +231,7 @@ function EditarProducto()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/productos",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtId").val(),imagen:$("#txtImagenproducto").val(),nombre_producto:$("#txtNombreproducto").val(),categoria_id:$("#txtCategoriaproducto").val(),marca_id:$("#txtMarcaproducto").val(),descripcion:$("#txtDescripcion").val(),stock:$("#txtStock").val(),precio_venta:$("#txtPrecioventa").val(),precio_compra:$("#txtPreciocompra").val(),lote:$("#txtLote").val()}
 		}
 	)
@@ -295,6 +303,7 @@ function eliminarProducto(id){
             $.ajax({
                 method: "delete",
                 url: "http://localhost/AngelaMaria/public/api/productos/"+PRODUCTO_TO_DELETE,
+                headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {
                 updateDataTableProductos();

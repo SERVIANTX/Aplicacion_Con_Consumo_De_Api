@@ -1,3 +1,9 @@
+//js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
+
 var DT_MARCAS;
 var MARCA_TO_DELETE;
 
@@ -7,6 +13,7 @@ $(document).ready(function(){
              "ajax":{
                  type: 'get',
                  url: "http://localhost/AngelaMaria/public/api/marcas",
+                 headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
                  },
@@ -75,6 +82,7 @@ function guardarmarca()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/marcas",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{nombre:$("#txtnombremarca").val()}
             
 		
@@ -128,7 +136,8 @@ function loadDataMarca(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/marcas/"+id
+      url: "http://localhost/AngelaMaria/public/api/marcas/"+id,
+      headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
 
@@ -148,6 +157,7 @@ function EditarMarca()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/marcas",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtIdmarca").val(),nombre:$("#txtNombre").val()}
 		}
 	)
@@ -186,6 +196,7 @@ function eliminarMarca(id){
             $.ajax({
                 method: "delete",
                 url: "http://localhost/AngelaMaria/public/api/marcas/"+MARCA_TO_DELETE,
+                headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {
                 updateDataTableMarca();

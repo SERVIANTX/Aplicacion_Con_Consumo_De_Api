@@ -1,3 +1,8 @@
+//js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
 var DT_CATEGORIAS;
 var CATEGORIA_TO_DELETE;
 
@@ -7,6 +12,7 @@ $(document).ready(function () {
         "ajax": {
             type: 'get',
             url: "http://localhost/AngelaMaria/public/api/categorias",
+            headers: {"Authorization": "Bearer "+_token},
             dataSrc: 'data',
             cache: true
         },
@@ -81,6 +87,7 @@ function guardarCategorias() {
     $.ajax({
             method: "POST",
             url: "http://localhost/AngelaMaria/public/api/categorias",
+            headers: {"Authorization": "Bearer "+_token},
             data: {
                 nombre_categoria: $("#txtnombre_categoria").val(),
                 estado: $("#txtestado").val(),
@@ -142,7 +149,8 @@ function loadnewCategoria() {
 function loadDataCategoria(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/categorias/" + id
+            url: "http://localhost/AngelaMaria/public/api/categorias/" + id,
+            headers: {"Authorization": "Bearer "+_token}
         })
         .done(function (response) {
 
@@ -169,6 +177,7 @@ function EditarCategoria() {
     $.ajax({
             method: "PUT",
             url: "http://localhost/AngelaMaria/public/api/categorias",
+            headers: {"Authorization": "Bearer "+_token},
             data: {
                 id: $("#txtId").val(),
                 nombre_categoria: $("#txtNombre_categoria").val(),
@@ -218,6 +227,7 @@ function eliminarCategoria(id) {
             $.ajax({
                     method: "delete",
                     url: "http://localhost/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
+                    headers: {"Authorization": "Bearer "+_token}
                 })
                 .done(function (msg) {
                     updateDataTableCategorias();

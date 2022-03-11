@@ -1,3 +1,8 @@
+//js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
 var DT_EMPLEADO;
 var EMPLEADO_TO_DELETE;
 
@@ -7,6 +12,7 @@ $(document).ready(function(){
              "ajax":{
                  type: 'get',
                  url: "http://localhost/AngelaMaria/public/api/empleados",
+                 headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
                  },
@@ -75,6 +81,7 @@ function guardarEmpleado()
 		{
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/empleados",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{nombre:$("#txtnombre").val(),apellido_paterno:$("#txtapellido_paterno").val(),apellido_materno:$("#txtapellido_materno").val(),numero_documento_identidad:$("#txtnumero_documento_identidad").val(),pais:$("#txtpais").val()}
             
 		
@@ -135,7 +142,8 @@ function loadDataEmpleado(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/empleados/"+id
+      url: "http://localhost/AngelaMaria/public/api/empleados/"+id,
+      headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
 
@@ -159,6 +167,7 @@ function EditarEmpleado()
 		{
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/empleados",
+            headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtId").val(),nombre:$("#txtNombre").val(),apellido_paterno:$("#txtApellido_paterno").val(),apellido_materno:$("#txtApellido_materno").val(),numero_documento_identidad:$("#txtNumero_documento_identidad").val(),pais:$("#txtPais").val()}
 		}
 	)
@@ -201,6 +210,7 @@ function eliminarEmpleado(id){
             $.ajax({
                 method: "delete",
                 url: "http://localhost/AngelaMaria/public/api/empleados/"+EMPLEADO_TO_DELETE,
+                headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {
                 updateDataTableEmpleado();

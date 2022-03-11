@@ -1,3 +1,8 @@
+//js para productos
+var _token = sessionStorage.getItem('_token');
+
+if(!_token)
+window.location = "/public_html/views/login.php";
 var DT_PEDIDOS;
 var PEDIDOS_TO_DELETE;
 
@@ -7,6 +12,7 @@ $(document).ready(function () {
         "ajax": {
             type: 'get',
             url: "http://localhost/AngelaMaria/public/api/pedidos",
+            headers: {"Authorization": "Bearer "+_token},
             dataSrc: 'data',
             cache: true
         },
@@ -92,6 +98,7 @@ function guardarPedido() {
     $.ajax({
             method: "POST",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
+            headers: {"Authorization": "Bearer "+_token},
             data: {
                 empleado: $("#txtempleado").val(),
                 cliente: $("#txtcliente").val(),
@@ -161,7 +168,8 @@ function loadnewPedido() {
 function loadDataPedido(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/pedidos/" + id
+            url: "http://localhost/AngelaMaria/public/api/pedidos/" + id,
+            headers: {"Authorization": "Bearer "+_token}
         })
         .done(function (response) {
 
@@ -192,6 +200,7 @@ function EditarPedido2() {
     $.ajax({
             method: "PUT",
             url: "http://localhost/AngelaMaria/public/api/pedidos",
+            headers: {"Authorization": "Bearer "+_token},
             data: {
                 id: $("#txtId").val(),
                 empleado: $("#txtEmpleado").val(),
@@ -247,6 +256,7 @@ function eliminarPedido(id) {
             $.ajax({
                     method: "delete",
                     url: "http://localhost/AngelaMaria/public/api/pedidos/" + PEDIDOS_TO_DELETE,
+                    headers: {"Authorization": "Bearer "+_token}
                 })
                 .done(function (msg) {
                     updateDataTablePedido();
