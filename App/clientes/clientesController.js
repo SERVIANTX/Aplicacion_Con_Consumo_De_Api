@@ -2,7 +2,7 @@
 var _token = sessionStorage.getItem('_token');
 
 if(!_token)
-window.location = "/public_html/views/login.php";
+window.location = "/Aplicacion_Con_Consumo_De_Api/view/login.html";
 var DT_CLIENTES;
 var CLIENTE_TO_DELETE;
 
