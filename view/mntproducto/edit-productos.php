@@ -30,11 +30,19 @@
                     </div>
                     <div class="form-group">
                         <label>Categoria</label>
-                        <input type="text" id="txtCategoriaproducto" name="txtCategoriaproducto" class="form-control" required>
+                        <input id="idCategoria" class="form-control" type="hidden" name="idCategoria" required> 
+                        <select name="txtCategoriaproducto" class="form-control" style=" width: 100%;" id="txtCategoriaproducto" required>
+                            
+                        </select>
                     </div>
+                    
+                   
                     <div class="form-group">
                         <label>Marca</label>
-                        <input type="text" id="txtMarcaproducto" name="txtMarcaproducto" class="form-control" required>
+                        <input id="idMarca" class="form-control" type="hidden" name="idMarca" required> 
+                        <select name="txtMarcaproducto" class="form-control" style="  width: 100%; " id="txtMarcaproducto" required>
+                            
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Descripcion</label>

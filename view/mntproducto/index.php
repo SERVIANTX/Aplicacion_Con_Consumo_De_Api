@@ -43,14 +43,12 @@
         </div>
 
         <div id="modalContainer1"></div>
-
-
-
+        
         <div class="card mb-30">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3>Listado de Producto</h3>
                 <br>
-                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewEmpleado()" >Nuevo</button>
+                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewProducto()" >Nuevo</button>
             </div>
 
             <div class="card-body">

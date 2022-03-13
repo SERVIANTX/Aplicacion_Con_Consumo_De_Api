@@ -105,6 +105,178 @@ $(document).ready(function(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+$(document).ready(function() {
+    $('#txtcategoriaproducto').select2();
+    $(function()
+    {
+
+
+        $.ajax({
+            type:'GET',
+            url: "http://localhost/AngelaMaria/public/api/categoriasnombre",
+            headers: {"Authorization": "Bearer "+_token},
+            success:function(response)
+            {
+                let array = [];
+               
+                $.each(response,function(indice,fila){       
+                    
+                    $('#txtcategoriaproducto').append("<option value='"+fila.id+"'>"+fila.nombre_categoria +"</option>");
+                    array.push(fila.nombre);
+                    
+                });
+              
+                
+               
+            }
+           
+
+
+        });
+    });
+    $('#txtcategoriaproducto').change(function(){
+        extraerid();
+    })
+    function extraerid(){
+        
+        $("#idcategoria").attr("value", $('#txtcategoriaproducto').val());
+        
+    }
+
+
+});
+
+$(document).ready(function() {
+    $('#txtmarcaproducto').select2();
+    $(function()
+    {
+
+
+        $.ajax({
+            type:'GET',
+            url: "http://localhost/AngelaMaria/public/api/marcasnombre",
+            headers: {"Authorization": "Bearer "+_token},
+            success:function(response)
+            {
+                let array = [];
+               
+                $.each(response,function(indice,fila){       
+                    
+                    $('#txtmarcaproducto').append("<option value='"+fila.id+"'>"+fila.nombre +"</option>");
+                    array.push(fila.nombre);
+                    
+                });
+              
+                
+               
+            }
+           
+
+
+        });
+    });
+    $('#txtmarcaproducto').change(function(){
+        extraerid();
+    })
+    function extraerid(){
+        
+        $("#idmarca").attr("value", $('#txtmarcaproducto').val());
+        
+    }
+
+
+});
+
+function editarcategoria(){
+
+    $('#txtCategoriaproducto').select2();
+    $(function()
+    {
+
+
+        $.ajax({
+            type:'GET',
+            url: "http://localhost/AngelaMaria/public/api/categoriasnombre",
+            headers: {"Authorization": "Bearer "+_token},
+            success:function(response)
+            {
+                let array = [];
+               
+                $.each(response,function(indice,fila){       
+                    
+                    $('#txtCategoriaproducto').append("<option value='"+fila.id+"'>"+fila.nombre_categoria +"</option>");
+                    array.push(fila.nombre);
+                    
+                });
+              
+                
+               
+            }
+           
+
+
+        });
+    });
+    $('#txtCategoriaproducto').change(function(){
+        extraerid();
+    })
+    function extraerid(){
+        
+        $("#idCategoria").attr("value", $('#txtCategoriaproducto').val());
+        
+    }
+}
+
+
+
+
+function editarmarca(){
+
+    $(document).ready(function() {
+        $('#txtMarcaproducto').select2();
+        $(function()
+        {
+    
+    
+            $.ajax({
+                type:'GET',
+                url: "http://localhost/AngelaMaria/public/api/marcasnombre",
+                headers: {"Authorization": "Bearer "+_token},
+                success:function(response)
+                {
+                    let array = [];
+                   
+                    $.each(response,function(indice,fila){       
+                        
+                        $('#txtMarcaproducto').append("<option value='"+fila.id+"'>"+fila.nombre +"</option>");
+                        array.push(fila.nombre);
+                        
+                    });
+                  
+                    
+                   
+                }
+               
+    
+    
+            });
+        });
+        $('#txtMarcaproducto').change(function(){
+            extraerid();
+        })
+        function extraerid(){
+            
+            $("#idMarca").attr("value", $('#txtMarcaproducto').val());
+            
+        }
+    
+    
+    });
+
+
+}
+
+
 
 
 
@@ -116,7 +288,7 @@ function guardarproducto()
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/productos",
             headers: {"Authorization": "Bearer "+_token},
-			data:{imagen:$("#txtimagenproducto").val(),nombre_producto:$("#txtnombreproducto").val(),categoria_id:$("#txtcategoriaproducto").val(),marca_id:$("#txtmarcaproducto").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
+			data:{imagen:$("#txtimagenproducto").val(),nombre_producto:$("#txtnombreproducto").val(),categoria_id:$("#idcategoria").val(),marca_id:$("#idmarca").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
 
         }
 	)
@@ -126,8 +298,8 @@ function guardarproducto()
 		    
         $("#txtimagenproducto").val("");
 		$("#txtnombreproducto").val("");
-        $("#txtcategoriaproducto").val("");
-        $("#txtmarcaproducto").val("");
+        $("#idcategoria").val("");
+        $("#idmarca").val("");
 		$("#txtdescripcion").val("");
 		$("#txtstock").val("");
 		$("#txtprecioventa").val("");
@@ -141,6 +313,7 @@ function guardarproducto()
 
 	});	
 }	
+
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +347,7 @@ function loadEditProducto(id)
 
 
 //////////////////////////////////////////////////////
-function loadnewEmpleado()
+function loadnewProducto()
 {
 
     $("#modalContainer1").load("../../views/mntproducto/new-productos.php",function(response){
@@ -183,7 +356,6 @@ function loadnewEmpleado()
 
 
 }
-
 
 
 ////////////////////////////////////////////////////////////////
@@ -197,15 +369,43 @@ function loadDataProducto(id)
       url: "http://localhost/AngelaMaria/public/api/productos/"+id,
       headers: {"Authorization": "Bearer "+_token},
     })
-    .done(function( response ) {
+    .done(function(response) {
 
-        console.log(response)
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/AngelaMaria/public/api/categorias/"+response.data.categoria_id,
+            headers: {"Authorization": "Bearer "+_token},
+        })
+        .done(function(response){
+
+            $('#txtCategoriaproducto').append("<option value='"+response.data.id+"'>"+response.data.nombre_categoria +"</option>"); 
+            $("#idCategoria").attr("value", response.data.id);
+
+        });
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/AngelaMaria/public/api/marcas/"+response.data.marca_id,
+            headers: {"Authorization": "Bearer "+_token},
+        })
+        .done(function(response){
+            $('#txtMarcaproducto').append("<option value='"+response.data.id+"'>"+response.data.nombre +"</option>");
+            $("#idMarca").attr("value", response.data.id);
+        });
+
+        $('#txtCategoriaproducto').click(function(){
+            document.getElementById("txtCategoriaproducto").innerHTML= "";
+            editarcategoria();
+        })
+
+        $('#txtMarcaproducto').click(function(){
+            document.getElementById("txtMarcaproducto").innerHTML= "";
+            editarmarca();
+        })
+        
 
         $("#txtId").val(response.data.id);
         $("#txtImagenproducto").val(response.data.imagen);
         $("#txtNombreproducto").val(response.data.nombre_producto);
-        $("#txtCategoriaproducto").val(response.data.categoria_id);
-        $("#txtMarcaproducto").val(response.data.marca_id);
         $("#txtDescripcion").val(response.data.descripcion);
         $("#txtStock").val(response.data.stock);
         $("#txtPrecioventa").val(response.data.precio_venta);
@@ -241,8 +441,8 @@ function EditarProducto()
 		
 		$("#txtImagenproducto").val("");
         $("#txtNombreproducto").val("");
-        $("#txtCategoriaproducto").val("");
-        $("#txtMarcaproducto").val("");
+        $("#idCategoria").val("");
+        $("#idMarca").val("");
 		$("#txtDescripcion").val("");
 		$("#txtStock").val("");
 		$("#txtPrecioventa").val("");

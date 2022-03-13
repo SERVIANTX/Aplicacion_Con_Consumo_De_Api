@@ -9,3 +9,5 @@
 <link rel="stylesheet" href="../../assets/css/responsive.css">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+<link rel="stylesheet" href="../../assets/css/select2.min.css">
