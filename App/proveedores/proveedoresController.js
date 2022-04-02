@@ -16,6 +16,7 @@ $(document).ready(function(){
                  dataSrc: 'data',
                  cache: true
                  },
+                 "aLengthMenu":[[5, 10, 15, 20],[5, 10, 15, 20]],
                  /* Cambiar el lenguaje de DataTable */
                 "language": {
                     "sProcessing": "Procesando...",
