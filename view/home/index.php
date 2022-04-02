@@ -44,9 +44,8 @@
         <div class="welcome-area">
             <div class="row m-0 align-items-center">
                 <div class="col-lg-5 col-md-12 p-0">
-                    <div class="welcome-content">
-                        <h1 class="mb-2">Hola, administrador bienvenido!</h1>
-                        <p class="mb-0">Solo haz algo mejor</p>
+                    <div class="welcome-content" id="Parte4">
+                        
                     </div>
                 </div>
 

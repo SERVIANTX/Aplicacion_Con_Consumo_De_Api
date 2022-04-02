@@ -32,12 +32,12 @@
 
         <!-- Breadcrumb Area -->
         <div class="breadcrumb-area">
-            <h1>Mnt Clientes</h1>
+            <h1>Hist Clientes</h1>
 
             <ol class="breadcrumb">
                 <li class="item"><a href="../home"><i class='bx bx-home-alt'></i></a></li>
 
-                <li class="item">Mantenimiento de Clientes</li>
+                <li class="item">Historial de Clientes</li>
 
             </ol>
         </div>
@@ -57,13 +57,12 @@
                 <table id="tablaclientes" name="tablaclientes" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creación</th>
-                            <th>Cliente</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
+                            <th>Imagen</th>
+                            <th>Nombre del Cliente</th>
+                            <th>Apellido del Cliente</th>
                             <th>Direccion</th>
                             <th>Documento de Identidad</th>
                             <th>Correo</th>
-                            <th>Acciones</th>
                     </thead>
                     <tbody>
 

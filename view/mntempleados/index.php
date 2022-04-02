@@ -57,11 +57,12 @@
                 <table id="tablaempleados" name="tablaempleados" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creación</th>
-                            <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
-                            <th>N° Documento de Identidad</th>
-                            <th>Pais</th>
+                            <th>Imagen</th>
+                            <th>Nombre del Cliente</th>
+                            <th>Apellido del Cliente</th>
+                            <th>Direccion</th>
+                            <th>Documento de Identidad</th>
+                            <th>Correo</th>
                             <th>Acciones</th>
                     </thead>
                     <tbody>

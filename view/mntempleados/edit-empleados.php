@@ -20,30 +20,38 @@
 
                 <div class="col-md-12">
 
-                <div class="form-group">
-                        <label>Nombre del Empleado</label>
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        <input type="text" id="txtImagen" name="txtImagen" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre </label>
                         <input type="text" id="txtNombre" name="txtNombre" class="form-control" required>
-                        
                     </div>
 
                     <div class="form-group">
-                        <label>Apellido Paterno</label>
-                        <input type="text" id="txtApellido_paterno" name="txtApellido_paterno" class="form-control" required>
+                        <label>Apellidos</label>
+                        <input type="text" id="txtApellido" name="txtApellido" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Apellido Materno</label>
-                        <input type="text" id="txtApellido_materno" name="txtApellido_materno" class="form-control" required>
+                        <label>Dirección</label>
+                        <input type="text" id="txtDireccion" name="txtDireccion" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Numero de Documento</label>
-                        <input type="text" id="txtNumero_documento_identidad" name="txtNumero_documento_identidad" class="form-control" required>
+                        <label>Documento de Identidad</label>
+                        <input type="text" id="txtDocumento" name="txtDocumento" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Pais</label>
-                        <input type="text" id="txtPais" name="txtPais" class="form-control" required>
+                        <label>Correo</label>
+                        <input type="text" id="txtCorreo" name="txtCorreo" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="txtContraseña" name="txtContraseña" class="form-control" required>
                     </div>
 
                  </div>

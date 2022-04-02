@@ -3,15 +3,15 @@ var _token = sessionStorage.getItem('_token');
 
 if(!_token)
 window.location = "/Aplicacion_Con_Consumo_De_Api/view/login.php";
-var DT_EMPLEADO;
+var DT_EMPLEADOS;
 var EMPLEADO_TO_DELETE;
 
 $(document).ready(function(){
 
-    DT_EMPLEADO=$('#tablaempleados').DataTable( {
+    DT_EMPLEADOS=$('#tablaempleados').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/empleados",
+                 url: "http://localhost/AngelaMaria/public/api/usuariosAdmin",
                  headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
@@ -42,7 +42,7 @@ $(document).ready(function(){
                         "sSortDescending": ": Activar para ordenar la columna de manera desendente"
                     }
                 },
-             columns: [
+            columns: [
                 {
                     "targets": 0,
                     "render": function (data, type, row) {
@@ -52,12 +52,17 @@ $(document).ready(function(){
                     },
     
                 },   
-                 { data: 'nombre' },
-                 { data: 'apellido_paterno' },
-                 { data: 'apellido_materno' },
-                 { data: 'numero_documento_identidad' },
-                 { data: 'pais' },
-                 {
+                { data: 'imagen',
+                            "render":function (data, type, row){
+                            return "<img class=\"rounded-circle\" src='"+ data +"' width=\"55\" height=\"30\" />";
+                    },
+                },
+                { data: 'name' },
+                { data: 'apellidos' },
+                { data: 'direccion' },
+                { data: 'numero_documento' },
+                { data: 'email' },
+                {
                     "targets": 3,
                     "render": function (data, type, row) {
                         
@@ -80,36 +85,35 @@ function guardarEmpleado()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
+			url:"http://localhost/AngelaMaria/public/api/ingresarAdmin",
             headers: {"Authorization": "Bearer "+_token},
-			data:{nombre:$("#txtnombre").val(),apellido_paterno:$("#txtapellido_paterno").val(),apellido_materno:$("#txtapellido_materno").val(),numero_documento_identidad:$("#txtnumero_documento_identidad").val(),pais:$("#txtpais").val()}
+			data:{imagen:$("#txtimagen").val(),name:$("#txtnombre").val(),apellidos:$("#txtapellido").val(),direccion:$("#txtdireccion").val(),numero_documento:$("#txtdocumento").val(),email:$("#txtcorreo").val(),password:$("#txtcontraseña").val()}
             
 		
         }
 	)
 	.done(function(msg){
        
+		$("#txtimagen").val("");
 		$("#txtnombre").val("");
-		$("#txtapellido_paterno").val("");
-		$("#txtapellido_materno").val("");
-		$("#txtnumero_documento_identidad").val("");
-		$("#txtpais").val("");
+		$("#txtapellido").val("");
+		$("#txtdireccion").val("");
+		$("#txtdocumento").val("");
+        $("#txtcorreo").val("");
+        $("#txtcontraseña").val("");
 
         $('#mntempleado').modal("hide");
         
-            
-             
-
 	});
-    updateDataTableEmpleado();	
+    updateDataTableAdmin();	
 }	
 
 
 
 /* Funcion para actualizar el DataTable */
-function updateDataTableEmpleado()
+function updateDataTableAdmin()
 {
-    DT_EMPLEADO.ajax.reload();
+    DT_EMPLEADOS.ajax.reload();
 }
 
 
@@ -142,18 +146,19 @@ function loadDataEmpleado(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/empleados/"+id,
+      url: "http://localhost/AngelaMaria/public/api/buscarAdmin/"+id,
       headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
 
-        console.log(response)
         $("#txtId").val(response.data.id);
-        $("#txtNombre").val(response.data.nombre);
-        $("#txtApellido_paterno").val(response.data.apellido_paterno);
-        $("#txtApellido_materno").val(response.data.apellido_materno);
-        $("#txtNumero_documento_identidad").val(response.data.numero_documento_identidad);
-        $("#txtPais").val(response.data.pais);
+        $("#txtImagen").val(response.data.imagen);
+        $("#txtNombre").val(response.data.name);
+        $("#txtApellido").val(response.data.apellidos);
+        $("#txtDireccion").val(response.data.direccion);
+        $("#txtDocumento").val(response.data.numero_documento);
+        $("#txtCorreo").val(response.data.email);
+        $("#txtContraseña").val(response.data.password);
 
         $('#mdlEditEmpleado').modal({ show: true,  backdrop: 'static', size: 'lg', keyboard: false });
     
@@ -166,25 +171,30 @@ function EditarEmpleado()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/empleados",
+			url:"http://localhost/AngelaMaria/public/api/ActualizarAdmin",
             headers: {"Authorization": "Bearer "+_token},
-			data:{id:$("#txtId").val(),nombre:$("#txtNombre").val(),apellido_paterno:$("#txtApellido_paterno").val(),apellido_materno:$("#txtApellido_materno").val(),numero_documento_identidad:$("#txtNumero_documento_identidad").val(),pais:$("#txtPais").val()}
+			data:{id:$("#txtId").val(),imagen:$("#txtImagen").val(),name:$("#txtNombre").val(),apellidos:$("#txtApellido").val(),direccion:$("#txtDireccion").val(),numero_documento:$("#txtDocumento").val(),email:$("#txtCorreo").val(),password:$("#txtContraseña").val()}
 		}
 	)
 	.done(function( msg ){
 
+        updateDataTableAdmin();	
 		$("#message").text("El empleado se actualizo satisfactoriamente");
 		
+		$("#txtId").val("");
+		$("#txtImagen").val("");
 		$("#txtNombre").val("");
-		$("#txtApellido_paterno").val("");
-		$("#txtApellido_materno").val("");
-		$("#txtNumero_documento_identidad").val("");
-		$("#txtPais").val("");
-       
+		$("#txtApellido").val("");
+		$("#txtDireccion").val("");
+        $("#txtDocumento").val("");
+        $("#txtCorreo").val("");
+        $("#txtContraseña").val("");
+        
       
 	});
     closeModalEmpleado();
-    updateDataTableEmpleado();	
+    
+    
 }	
 function closeModalEmpleado()
 {
@@ -196,33 +206,13 @@ function eliminarEmpleado(id){
     EMPLEADO_TO_DELETE=id;
 
     Swal.fire({
-        title: 'Eliminar?',
-        text: "Esta seguro que desea eliminar el registro!",
+        title: 'Acceso Denegado!',
+        text: "No se puede elimar a usuarios Administradores!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        cancelButtonText: 'NO',
-        confirmButtonText: 'Si'
-      }).then((result) => {
-        if (result.isConfirmed) {
-
-            $.ajax({
-                method: "delete",
-                url: "http://localhost/AngelaMaria/public/api/empleados/"+EMPLEADO_TO_DELETE,
-                headers: {"Authorization": "Bearer "+_token}
-              })
-              .done(function( msg ) {
-                updateDataTableEmpleado();
-                });
-
-                Swal.fire(
-                    'Eliminado!',
-                    'Eliminado correctamente.',
-                    'success'
-                )
-        }{
-        }
+        cancelButtonText: 'OK',
       })
 }
 

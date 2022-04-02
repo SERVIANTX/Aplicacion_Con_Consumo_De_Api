@@ -140,8 +140,9 @@
                                     localStorage.setItem("Admin", JSON.stringify(fila));
 
                                     });
+
                                     window.location="home/index.php";
-                            });
+                                });
                         
                     });
                     

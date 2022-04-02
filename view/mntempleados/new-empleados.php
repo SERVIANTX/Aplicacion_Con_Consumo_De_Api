@@ -13,28 +13,37 @@
 
 
                     <div class="form-group">
-                        <label>Nombre del Empleado</label>
+                        <label>Imagen</label>
+                        <input type="text" id="txtimagen" name="txtimagen" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre </label>
                         <input type="text" id="txtnombre" name="txtnombre" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Apellido Paterno</label>
-                        <input type="text" id="txtapellido_paterno" name="txtapellido_paterno" class="form-control" required>
+                        <label>Apellidos</label>
+                        <input type="text" id="txtapellido" name="txtapellido" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Apellido Materno</label>
-                        <input type="text" id="txtapellido_materno" name="txtapellido_materno" class="form-control" required>
+                        <label>Dirección</label>
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Numero de Documento</label>
-                        <input type="text" id="txtnumero_documento_identidad" name="txtnumero_documento_identidad" class="form-control" required>
+                        <label>Documento de Identidad</label>
+                        <input type="text" id="txtdocumento" name="txtdocumento" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Pais</label>
-                        <input type="text" id="txtpais" name="txtpais" class="form-control" required>
+                        <label>Correo</label>
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="txtcontraseña" name="txtcontraseña" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
