@@ -58,6 +58,7 @@
                 <table id="tablacategorias" name="tablacategorias" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creacion</th>
+                            <th>Imagen</th>
                             <th>Nombre de Categoria</th>
                             <th>Estado</th>
                             <th>Acciones</th>

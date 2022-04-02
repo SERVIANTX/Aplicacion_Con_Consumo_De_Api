@@ -16,7 +16,11 @@
                         <label>Nombre de la Categoria</label>
                         <input type="text" id="txtnombre_categoria" name="txtnombre_categoria" class="form-control" required>
                     </div>
-
+                    <div class="form-group">
+                        <label>Imagen de la Categoria</label>
+                        <input type="text" id="txtimagencategoria" name="txtnombre_categoria" class="form-control" required>
+                    </div>
+                    
                     <div class="form-group">
                         <label>Estado</label>
                         <input type="text" id="txtestado" name="txtestado" class="form-control" required>

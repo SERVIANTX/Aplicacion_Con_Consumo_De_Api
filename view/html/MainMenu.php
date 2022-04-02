@@ -82,7 +82,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../cerrarsesion" class="nav-link" >
                     <span class="icon"><i class='bx bx-log-out'></i></span>
                     <span class="menu-title">Cerrar Sesión</span>
                 </a>

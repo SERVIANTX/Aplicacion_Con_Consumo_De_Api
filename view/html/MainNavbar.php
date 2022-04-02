@@ -25,17 +25,6 @@
                 </a>
 
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>German</span>
-
-                        <img src="../../assets/img/germany-flag.jpg" alt="flag">
-                    </a>
-
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>French</span>
-
-                        <img src="../../assets/img/france-flag.jpg" alt="flag">
-                    </a>
 
                     <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
                         <span>English</span>
@@ -43,17 +32,6 @@
                         <img src="../../assets/img/us-flag.jpg" alt="flag">
                     </a>
 
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>Russian</span>
-
-                        <img src="../../assets/img/russia-flag.jpg" alt="flag">
-                    </a>
-
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>Italian</span>
-
-                        <img src="../../assets/img/italy-flag.jpg" alt="flag">
-                    </a>
                 </div>
             </li>
 
@@ -61,21 +39,17 @@
             <li class="nav-item dropdown profile-nav-item">
                 <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <div class="menu-profile">
-                        <span class="name">Hola Admin!</span>
-                        <img src="../../assets/img/user1.jpg" class="rounded-circle" alt="image">
+                    <div class="menu-profile" id ="Parte1">
                     </div>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="dropdown-header d-flex flex-column align-items-center">
-                        <div class="figure mb-3">
-                            <img src="../../assets/img/user1.jpg" class="rounded-circle" alt="image">
+                        <div class="figure mb-3" id ="Parte2">
                         </div>
 
-                        <div class="info text-center">
-                            <span class="name">Admin</span>
-                            <p class="mb-3 email">admin@gmail.com</p>
+                        <div class="info text-center" id ="Parte3">
+                            
                         </div>
                     </div>
 
@@ -93,7 +67,7 @@
                     <div class="dropdown-footer">
                         <ul class="profile-nav">
                             <li class="nav-item">
-                                <a href="../html/logout.php" class="nav-link">
+                                <a href="../cerrarsesion" class="nav-link">
                                     <i class='bx bx-log-out'></i> <span>Cerrar Sesión</span>
                                 </a>
                             </li>

@@ -2,9 +2,13 @@
 var _token = sessionStorage.getItem('_token');
 
 if(!_token)
-window.location = "/Aplicacion_Con_Consumo_De_Api/view/login.html";
+window.location = "/Aplicacion_Con_Consumo_De_Api/view/login.php";
 var DT_PEDIDOS;
 var PEDIDOS_TO_DELETE;
+
+function cerrarsesion(){
+    console.log("hola");
+}
 
 $(document).ready(function () {
 
@@ -51,9 +55,7 @@ $(document).ready(function () {
                 },
 
             },
-            {
-                data: 'empleado'
-            },
+            
             {
                 data: 'cliente'
             },
@@ -61,10 +63,24 @@ $(document).ready(function () {
                 data: 'direccion'
             },
             {
-                data: 'fecha_pedido'
+               
+                "targets": 4,
+                "render": function (data, type, row) {
+                    /* Retorna la fecha de creacion */
+                  //  return row.created_at;
+                    return moment(row.fecha_pedido).format('DD/MM/YYYY');
+                },
             },
             {
-                data: 'fecha_envio'
+                "targets": 5,
+                "render": function (data, type, row) {
+                    /* Retorna la fecha de creacion */
+                  //  return row.created_at;
+                    return moment(row.fecha_envio).format('DD/MM/YYYY');
+                },
+            },
+            {
+                data: 'importe'
             },
             {
                 data: 'estado',
@@ -94,38 +110,6 @@ $(document).ready(function () {
 
 
 
-function guardarPedido() {
-    $.ajax({
-            method: "POST",
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
-            headers: {"Authorization": "Bearer "+_token},
-            data: {
-                empleado: $("#txtempleado").val(),
-                cliente: $("#txtcliente").val(),
-                direccion: $("#txtdireccion").val(),
-                fecha_pedido: $("#txtfecha_pedido").val(),
-                fecha_envio: $("#txtfecha_envio").val(),
-                estado: $("#txtestado").val(),
-            }
-        })
-        .done(function (msg) {
-
-            //$("#message").text("El empleado se registro satisfactoriamente");
-            $("#txtempleado").val("");
-            $("#txtcliente").val("");
-            $("#txtdireccion").val("");
-            $("#txtfecha_pedido").val("");
-            $("#txtfecha_envio").val("");
-            $("#txtestado").val("");
-
-            $('#mdlpedido').modal("hide");
-
-            updateDataTablePedido();
-        });
-}
-
-
-
 /* Funcion para actualizar el DataTable */
 function updateDataTablePedido() {
     DT_PEDIDOS.ajax.reload();
@@ -147,51 +131,37 @@ function loadEditPedido(id) {
 
 
 
+function loadDataPedido(id)
+{
+    $.ajax({
+      method: "GET",
+      url: "http://localhost/AngelaMaria/public/api/pedidos/"+id,
+      headers: {"Authorization": "Bearer "+_token}
+    })
+    .done(function( response ) {
 
-function loadnewPedido() {
+        $("#txtId").val(response.data.id);
 
-    $("#modalContainer1").load("../../views/mntpedidos/new-pedidos.php", function (response) {
-        $('#mdlpedido').modal({
+        $('#txtEstado').append("<option value='"+response.data.estado+"'>"+response.data.estado +"</option>");
+        llenardatos();
+        $('#mdlEditPedido').modal({
             show: true,
             backdrop: 'static',
             size: 'lg',
             keyboard: false
         });
-    });
-
-
+    
+      });
+    
 }
 
-
-
-
-function loadDataPedido(id) {
-    $.ajax({
-            method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/pedidos/" + id,
-            headers: {"Authorization": "Bearer "+_token}
-        })
-        .done(function (response) {
-
-            console.log(response)
-            $("#txtId").val(response.data.id);
-            $("#txtEmpleado").val(response.data.empleado);
-            $("#txtCliente").val(response.data.cliente);
-            $("#txtDireccion").val(response.data.direccion);
-            $("#txtFecha_pedido").val(response.data.fecha_pedido);
-            $("#txtFecha_envio").val(response.data.fecha_envio);
-            $("#txtEstado").val(response.data.estado);
-
-            $('#mdlEditPedido').modal({
-                show: true,
-                backdrop: 'static',
-                size: 'lg',
-                keyboard: false
-            });
-
-        });
-
+function llenardatos()
+{
+    $('#txtEstado').append("<option value ='En proceso' > En proceso </option>");
+    $('#txtEstado').append(" <option value='Finalizado'> Finalizado</option>");
+    
 }
+
 
 
 
@@ -203,22 +173,12 @@ function EditarPedido2() {
             headers: {"Authorization": "Bearer "+_token},
             data: {
                 id: $("#txtId").val(),
-                empleado: $("#txtEmpleado").val(),
-                cliente: $("#txtCliente").val(),
-                direccion: $("#txtDireccion").val(),
-                fecha_pedido: $("#txtFecha_pedido").val(),
-                fecha_envio: $("#txtFecha_envio").val(),
                 estado: $("#txtEstado").val(),
             }
         })
         .done(function (msg) {
             $("#message").text("El pedido se actualizo satisfactoriamente");
 
-            $("#txtEmpleado").val("");
-            $("#txtCliente").val("");
-            $("#txtDireccion").val("");
-            $("#txtFecha_pedido").val("");
-            $("#txtFecha_envio").val("");
             $("#txtEstado").val("");
 
 
@@ -270,3 +230,86 @@ function eliminarPedido(id) {
         } {}
     })
 }
+
+
+
+
+
+// $(document).ready(function() {
+//     $('#txtcliente').select2();
+//     $(function()
+//     {
+
+
+//         $.ajax({
+//             type:'GET',
+//             url: "http://localhost/AngelaMaria/public/api/clientesnombre",
+//             headers: {"Authorization": "Bearer "+_token},
+//             success:function(response)
+//             {
+               
+//                 $.each(response,function(indice,fila){       
+                    
+//                     $('#txtcliente').append("<option value='"+fila.id+"'>"+fila.nombrecliente +"</option>");
+
+//                 });
+              
+                
+               
+//             }
+           
+
+
+//         });
+//     });
+
+//     extraerdatos();
+
+
+// });
+
+// function extraerdatos(){
+//     $('#txtcliente').change(function(){
+//         extraerid();
+
+//     })
+//     function extraerid(){
+        
+//         $("#idCliente").attr("value", $('#txtcliente').val());
+//         rellenardatos();
+//     }
+// }
+
+// function rellenardatos(){
+//     var id =  $('#idCliente').val();
+
+//         $.ajax({
+//             method: "GET",
+//             url: "http://localhost/AngelaMaria/public/api/clientes/"+id,
+            
+//             headers: {"Authorization": "Bearer "+_token}
+//           })
+//           .done(function( response ) {
+      
+//               console.log(response)
+//               $("#txtdireccion").val(response.data.direccion);
+//             });
+// }
+
+// $(document).ready(function() {
+    
+
+// $('#rdbguardado').click(function(){
+//     document.getElementById("divdireccion").innerHTML= "<input type=\"text\" id=\"txtdireccion\" name=\"txtdireccion\" class=\"form-control\" required readonly>";
+//     rellenardatos();
+
+// })
+// $('#rdbalternativo').click(function(){
+//     document.getElementById("divdireccion").innerHTML= "<input type=\"text\" id=\"txtdireccion\" name=\"txtdireccion\" class=\"form-control\" value=\"prueba2\" required>";
+// })
+// $('#rdbtienda').click(function(){
+//     document.getElementById("divdireccion").innerHTML= "<input type=\"text\" id=\"txtdireccion\" name=\"txtdireccion\" class=\"form-control\" value=\"Recojo en Tienda\" required>";
+// })
+
+
+// });

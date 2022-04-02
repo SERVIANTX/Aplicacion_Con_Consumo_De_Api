@@ -1,3 +1,4 @@
+<?php  SESSION_START(); ?>
 <!doctype html>
 <html lang="es">
 
@@ -124,10 +125,27 @@
                     })
                     .done(function (response) {
 
+                        
                         sessionStorage.setItem('_token', response.data.token);
+                        $.ajax({
+                            method: "GET",
+                            url: "http://localhost/AngelaMaria/public/api/datosAdmin/"+$("#txtEmail").val(),
+                            headers: {"Authorization": "Bearer "+ response.data.token}
+                            })
+                            .done(function( response ) {
+                                $.each(response,function(indice,fila){       
 
-                        window.location="home/index.php";
+                                    let admin = fila;
+                                    
+                                    localStorage.setItem("Admin", JSON.stringify(fila));
+
+                                    });
+                                    window.location="home/index.php";
+                            });
+                        
                     });
+                    
+
             }
         });
 

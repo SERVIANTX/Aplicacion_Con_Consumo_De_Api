@@ -3,7 +3,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5>Editar Categoria</h5>
+                <h5>Editar Estado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -21,35 +21,10 @@
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <label>Empleado</label>
-                                <input type="text" id="txtEmpleado" name="txtEmpleado" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Cliente</label>
-                                <input type="text" id="txtCliente" name="txtCliente" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" id="txtDireccion" name="txtDireccion" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Fecha de Pedido</label>
-                                <input type="text" id="txtFecha_pedido" name="txtFecha_pedido" class="form-control"
-                                    required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Fecha de Envio</label>
-                                <input type="text" id="txtFecha_envio" name="txtFecha_envio" class="form-control"
-                                    required>
-                            </div>
-
-                            <div class="form-group">
                                 <label>Estado</label>
-                                <input type="text" id="txtEstado" name="txtEstado" class="form-control" required>
+                                <select name="txtEstado" class="form-control" id="txtEstado">
+                                   
+                                </select>
                             </div>
 
                         </div>

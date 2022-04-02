@@ -33,12 +33,12 @@
 
         <!-- Breadcrumb Area -->
         <div class="breadcrumb-area">
-            <h1>Mnt Pedidos</h1>
+            <h1>Hist Pedidos</h1>
 
             <ol class="breadcrumb">
                 <li class="item"><a href="../home"><i class='bx bx-home-alt'></i></a></li>
 
-                <li class="item">Mantenimiento de Pedidos</li>
+                <li class="item">Historial de Pedidos</li>
 
             </ol>
         </div>
@@ -51,18 +51,17 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3>Listado de Pedidos</h3>
                 <br>
-                <button type="button" class="btn btn-dark" data-toggle="modal" onclick="loadnewPedido()" >Nuevo</button>
             </div>
 
             <div class="card-body">
                 <table id="tablapedidos" name="tablapedidos" class="table display responsive nowrap">
                     <thead>
                             <th>Fecha de Creación</th>
-                            <th>Empleado</th>
                             <th>Cliente</th>
                             <th>Direccion</th>
                             <th>Fecha Pedido</th>
                             <th>Fecha Envio</th>
+                            <th>Importe</th>
                             <th>Estado</th>
                             <th></th>
                     </thead>
