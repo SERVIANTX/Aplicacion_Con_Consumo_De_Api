@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 
@@ -31,17 +32,15 @@
 
                     <h2>Bienvenido</h2>
 
-                    <form action="" method="post">
+                    <form id="frmLogin">
 
                         <div class="form-group">
-                            <input type="email" class="form-control" id="correo" name="correo"
-                                placeholder="Correo Electrónico">
+                            <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Correo Electrónico">
                             <span class="label-title"><i class='bx bx-user'></i></span>
                         </div>
 
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Contraseña">
+                            <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Contraseña">
                             <span class="label-title"><i class='bx bx-lock'></i></span>
                         </div>
 
@@ -54,7 +53,7 @@
 
                             </div>
                         </div>
-                        <input type="hidden" name="enviar" value="si">
+                        <!-- <input type="hidden" name="enviar" value="si"> -->
                         <button type="submit" class="login-btn">Acceder</button>
 
 
@@ -104,6 +103,87 @@
     <script src="assets\js\jvectormap-world-mill-en.js"></script>
     <!-- Custom JS -->
     <script src="assets\js\custom.js"></script>
+
+    <!-- jquery-validation -->
+    <script src="assets/js/jquery-validation/jquery.validate.min.js"></script>
+    <script src="assets/js/jquery-validation/additional-methods.min.js"></script>
+
+
+    <script type="text/javascript">
+
+    $(function () {
+        $.validator.setDefaults({
+            submitHandler: function () {
+
+                $.ajax({
+                        method: "POST",
+                        url: "http://localhost/AngelaMaria/public/api/seguridad/login",
+                        data: {
+                            email: $("#txtEmail").val(),
+                            password: $("#txtPassword").val()
+                        }
+                    })
+                    .done(function (response) {
+
+                        
+                        sessionStorage.setItem('_token', response.data.token);
+                        $.ajax({
+                            method: "GET",
+                            url: "http://localhost/AngelaMaria/public/api/datosAdmin/"+$("#txtEmail").val(),
+                            headers: {"Authorization": "Bearer "+ response.data.token}
+                            })
+                            .done(function( response ) {
+                                $.each(response,function(indice,fila){       
+
+                                    let admin = fila;
+                                    
+                                    localStorage.setItem("Admin", JSON.stringify(fila));
+
+                                    });
+
+                                    window.location="view/home/index.php";
+                                });
+                        
+                    });
+                    
+
+            }
+        });
+
+
+        $('#frmLogin').validate({
+            rules: {
+                txtEmail: {
+                    required: true
+                },
+                txtPassword: {
+                    required: true
+                }
+            },
+            messages: {
+                txtEmail: {
+                    required: "Ingrese el email"
+                },
+                txtPassword: {
+                    required: "Ingrese el password"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
+    });
+</script>
+
+
 </body>
 
 </html>

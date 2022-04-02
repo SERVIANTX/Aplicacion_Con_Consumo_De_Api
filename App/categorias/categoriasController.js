@@ -2,7 +2,7 @@
 var _token = sessionStorage.getItem('_token');
 
 if(!_token)
-window.location = "/Aplicacion_Con_Consumo_De_Api/view/login.php";
+window.location = "../../index.php";
 var DT_CATEGORIAS;
 var CATEGORIA_TO_DELETE;
 
@@ -59,8 +59,6 @@ $(document).ready(function () {
             {
                 data: 'nombre_categoria',
                 
-  
-                               
             },
             {
                 data: 'estado',
