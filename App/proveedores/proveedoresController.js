@@ -16,7 +16,6 @@ $(document).ready(function(){
                  dataSrc: 'data',
                  cache: true
                  },
-
                  /* Cambiar el lenguaje de DataTable */
                 "language": {
                     "sProcessing": "Procesando...",
@@ -42,6 +41,7 @@ $(document).ready(function(){
                         "sSortDescending": ": Activar para ordenar la columna de manera desendente"
                     }
                 },
+                
              columns: [
                 {
                     "targets": 0,
@@ -69,6 +69,7 @@ $(document).ready(function(){
                 
      
              ]
+             
      
          });
      
