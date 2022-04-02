@@ -1,4 +1,4 @@
-<?php  SESSION_START(); ?>
+
 <!doctype html>
 <html lang="es">
 
