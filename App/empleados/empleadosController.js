@@ -210,7 +210,6 @@ function eliminarEmpleado(id){
         text: "No se puede elimar a usuarios Administradores!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'OK',
       })

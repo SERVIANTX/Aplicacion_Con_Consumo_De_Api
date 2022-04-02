@@ -67,7 +67,7 @@
                             <i class='bx bxs-user-check'></i>
                         </div>
                         <span class="sub-title">Suscripción ganada</span>
-                        <h3>23.7k <span class="badge"><i class='bx bx-up-arrow-alt'></i> 26.0%</span></h3>
+                        <h3>57 <span class="badge"><i class='bx bx-up-arrow-alt'></i> 26.0%</span></h3>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                             <i class='bx bxs-badge-dollar'></i>
                         </div>
                         <span class="sub-title">Ingresos generados</span>
-                        <h3>15.1k <span class="badge badge-red"><i class='bx bx-down-arrow-alt'></i> 45.5%</span></h3>
+                        <h3>S/450 <span class="badge badge-red"><i class='bx bx-down-arrow-alt'></i> 45.5%</span></h3>
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                             <i class='bx bx-purchase-tag'></i>
                         </div>
                         <span class="sub-title">Ventas Trimestrales</span>
-                        <h3>30.9k <span class="badge"><i class='bx bx-up-arrow-alt'></i> 32.1%</span></h3>
+                        <h3>120 <span class="badge"><i class='bx bx-up-arrow-alt'></i> 32.1%</span></h3>
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                             <i class='bx bx-shopping-bag'></i>
                         </div>
                         <span class="sub-title">Ordenes recibidas</span>
-                        <h3>10.5k <span class="badge"><i class='bx bx-up-arrow-alt'></i> 56.9%</span></h3>
+                        <h3>10 <span class="badge"><i class='bx bx-up-arrow-alt'></i> 56.9%</span></h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                                 <div class="pr-4 border-right">
                                     <p class="mb-1">Ingresos netos</p>
                                     <h5 class="mb-0">
-                                        <span class="font-weight-bold">$50,525</span>
+                                        <span class="font-weight-bold">S/597</span>
                                         <span class="primary-text">+8.71%</span>
                                     </h5>
                                 </div>
@@ -150,7 +150,7 @@
                                 <div class="px-4 border-right">
                                     <p class="mb-1">Venta</p>
                                     <h5 class="mb-0">
-                                        <span class="font-weight-bold">$20,520</span>
+                                        <span class="font-weight-bold">S/210</span>
                                         <span class="danger-text">+2.82%</span>
                                     </h5>
                                 </div>
@@ -158,7 +158,7 @@
                                 <div class="px-4">
                                     <p class="mb-1">Costos</p>
                                     <h5 class="mb-0">
-                                        <span class="font-weight-bold">$7,317</span>
+                                        <span class="font-weight-bold">S/387</span>
                                         <span class="primary-text">+10.2%</span>
                                     </h5>
                                 </div>
@@ -176,7 +176,7 @@
                         <i class='bx bx-shopping-bag'></i>
                     </div>
                     nuevos productos
-                    <span class="sub-text d-block font-weight-bold">1.3K</span>
+                    <span class="sub-text d-block font-weight-bold">13</span>
                 </div>
 
                 <div class="new-user-box">
@@ -184,7 +184,7 @@
                         <i class='bx bx-user-pin'></i>
                     </div>
                     Usuarios nuevos
-                    <span class="sub-text d-block font-weight-bold">2.5K</span>
+                    <span class="sub-text d-block font-weight-bold">25</span>
                 </div>
 
                 <div class="upcoming-product-box">
@@ -192,7 +192,7 @@
                         <i class='bx bx-cart-alt'></i>
                     </div>
                     Próximos productos
-                    <span class="sub-text d-block font-weight-bold">1.1K</span>
+                    <span class="sub-text d-block font-weight-bold">11</span>
                 </div>
             </div>
 
