@@ -2,6 +2,6 @@
     echo "<script>sessionStorage.clear();
         localStorage.removeItem('Admin');
 
-    window.location = '../../index.php';
+    window.location = '../../';
        </script>"
 ?>

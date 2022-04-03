@@ -141,7 +141,7 @@
 
                                     });
 
-                                    window.location="view/home/index.php";
+                                    window.location="view/home/";
                                 });
                         
                     });
