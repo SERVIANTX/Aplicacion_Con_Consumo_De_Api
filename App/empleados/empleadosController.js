@@ -209,7 +209,6 @@ function eliminarEmpleado(id){
         title: 'Acceso Denegado!',
         text: "No se puede elimar a usuarios Administradores!",
         icon: 'warning',
-        showCancelButton: true,
         cancelButtonColor: '#d33',
         cancelButtonText: 'OK',
       })
