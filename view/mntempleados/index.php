@@ -63,6 +63,7 @@
                             <th>Direccion</th>
                             <th>Documento de Identidad</th>
                             <th>Correo</th>
+                            <th>Telefono</th>
                             <th>Acciones</th>
                     </thead>
                     <tbody>

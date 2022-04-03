@@ -36,6 +36,10 @@
                         <label>Documento de Identidad</label>
                         <input type="text" id="txtdocumento" name="txtdocumento" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                        <label>Numero de Telefono</label>
+                        <input type="text" id="txttelefono" name="txttelefono" class="form-control" required>
+                    </div>
 
                     <div class="form-group">
                         <label>Correo</label>

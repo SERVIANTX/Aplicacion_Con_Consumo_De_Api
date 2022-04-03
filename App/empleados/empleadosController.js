@@ -62,6 +62,7 @@ $(document).ready(function(){
                 { data: 'direccion' },
                 { data: 'numero_documento' },
                 { data: 'email' },
+                { data: 'telefono' },
                 {
                     "targets": 3,
                     "render": function (data, type, row) {
@@ -87,7 +88,7 @@ function guardarEmpleado()
 			method:"POST",
 			url:"http://localhost/AngelaMaria/public/api/ingresarAdmin",
             headers: {"Authorization": "Bearer "+_token},
-			data:{imagen:$("#txtimagen").val(),name:$("#txtnombre").val(),apellidos:$("#txtapellido").val(),direccion:$("#txtdireccion").val(),numero_documento:$("#txtdocumento").val(),email:$("#txtcorreo").val(),password:$("#txtcontraseña").val()}
+			data:{imagen:$("#txtimagen").val(),name:$("#txtnombre").val(),apellidos:$("#txtapellido").val(),direccion:$("#txtdireccion").val(),numero_documento:$("#txtdocumento").val(),telefono:$("#txttelefono").val(),email:$("#txtcorreo").val(),password:$("#txtcontraseña").val()}
             
 		
         }
@@ -99,6 +100,7 @@ function guardarEmpleado()
 		$("#txtapellido").val("");
 		$("#txtdireccion").val("");
 		$("#txtdocumento").val("");
+        $("#txttelefono").val("");
         $("#txtcorreo").val("");
         $("#txtcontraseña").val("");
 
@@ -157,6 +159,7 @@ function loadDataEmpleado(id)
         $("#txtApellido").val(response.data.apellidos);
         $("#txtDireccion").val(response.data.direccion);
         $("#txtDocumento").val(response.data.numero_documento);
+        $("#txtTelefono").val(response.data.telefono);
         $("#txtCorreo").val(response.data.email);
         $("#txtContraseña").val(response.data.password);
 
@@ -173,7 +176,7 @@ function EditarEmpleado()
 			method:"PUT",
 			url:"http://localhost/AngelaMaria/public/api/ActualizarAdmin",
             headers: {"Authorization": "Bearer "+_token},
-			data:{id:$("#txtId").val(),imagen:$("#txtImagen").val(),name:$("#txtNombre").val(),apellidos:$("#txtApellido").val(),direccion:$("#txtDireccion").val(),numero_documento:$("#txtDocumento").val(),email:$("#txtCorreo").val(),password:$("#txtContraseña").val()}
+			data:{id:$("#txtId").val(),imagen:$("#txtImagen").val(),name:$("#txtNombre").val(),apellidos:$("#txtApellido").val(),direccion:$("#txtDireccion").val(),numero_documento:$("#txtDocumento").val(),telefono:$("#txtTelefono").val(),email:$("#txtCorreo").val(),password:$("#txtContraseña").val()}
 		}
 	)
 	.done(function( msg ){
@@ -187,6 +190,7 @@ function EditarEmpleado()
 		$("#txtApellido").val("");
 		$("#txtDireccion").val("");
         $("#txtDocumento").val("");
+        $("#txtTelefono").val("");
         $("#txtCorreo").val("");
         $("#txtContraseña").val("");
         

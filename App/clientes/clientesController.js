@@ -71,6 +71,9 @@ var CLIENTE_TO_DELETE;
                 {
                     data: 'email'
                 },
+                {
+                    data: 'telefono'
+                },
             ]
     
         });

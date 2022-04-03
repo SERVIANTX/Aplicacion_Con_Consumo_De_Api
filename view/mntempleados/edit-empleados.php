@@ -46,6 +46,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Numero de Telefono</label>
+                        <input type="text" id="txtTelefono" name="txtTelefono" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
                         <label>Correo</label>
                         <input type="text" id="txtCorreo" name="txtCorreo" class="form-control" required>
                     </div>

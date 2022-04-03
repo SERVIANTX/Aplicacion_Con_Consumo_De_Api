@@ -5429,17 +5429,7 @@ App Calendar CSS
   background: #ffffff;
 }
 
-.calendar-container .calendar {
-  display: -ms-grid;
-  display: grid;
-  width: 100%;
-  overflow: auto;
-  -ms-grid-columns: (minmax(120px, 1fr))[7];
-      grid-template-columns: repeat(7, minmax(120px, 1fr));
-  -ms-grid-rows: 50px;
-      grid-template-rows: 50px;
-  grid-auto-rows: 120px;
-}
+
 
 .calendar-container .calendar-header {
   position: relative;
