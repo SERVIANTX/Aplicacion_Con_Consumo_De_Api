@@ -12,7 +12,7 @@ $(document).ready(function(){
     DT_PRODUCTOS=$('#tablaproductos').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/productos",
+                 url: "https://apiangelamaria.000webhostapp.com/api/productos",
                  headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
         $.ajax({
             type:'GET',
-            url: "http://localhost/AngelaMaria/public/api/categoriasnombre",
+            url: "https://apiangelamaria.000webhostapp.com/api/categoriasnombre",
             headers: {"Authorization": "Bearer "+_token},
             success:function(response)
             {
@@ -154,7 +154,7 @@ $(document).ready(function() {
 
         $.ajax({
             type:'GET',
-            url: "http://localhost/AngelaMaria/public/api/marcasnombre",
+            url: "https://apiangelamaria.000webhostapp.com/api/marcasnombre",
             headers: {"Authorization": "Bearer "+_token},
             success:function(response)
             {
@@ -196,7 +196,7 @@ function editarcategoria(){
 
         $.ajax({
             type:'GET',
-            url: "http://localhost/AngelaMaria/public/api/categoriasnombre",
+            url: "https://apiangelamaria.000webhostapp.com/api/categoriasnombre",
             headers: {"Authorization": "Bearer "+_token},
             success:function(response)
             {
@@ -240,7 +240,7 @@ function editarmarca(){
     
             $.ajax({
                 type:'GET',
-                url: "http://localhost/AngelaMaria/public/api/marcasnombre",
+                url: "https://apiangelamaria.000webhostapp.com/api/marcasnombre",
                 headers: {"Authorization": "Bearer "+_token},
                 success:function(response)
                 {
@@ -286,7 +286,7 @@ function guardarproducto()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/productos",
+			url:"https://apiangelamaria.000webhostapp.com/api/productos",
             headers: {"Authorization": "Bearer "+_token},
 			data:{imagen:$("#txtimagenproducto").val(),nombre_producto:$("#txtnombreproducto").val(),categoria_id:$("#idcategoria").val(),marca_id:$("#idmarca").val(),descripcion:$("#txtdescripcion").val(),stock:$("#txtstock").val(),precio_venta:$("#txtprecioventa").val(),precio_compra:$("#txtpreciocompra").val(),lote:$("#txtlote").val()}
 
@@ -366,14 +366,14 @@ function loadDataProducto(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/productos/"+id,
+      url: "https://apiangelamaria.000webhostapp.com/api/productos/"+id,
       headers: {"Authorization": "Bearer "+_token},
     })
     .done(function(response) {
 
         $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/categorias/"+response.data.categoria_id,
+            url: "https://apiangelamaria.000webhostapp.com/api/categorias/"+response.data.categoria_id,
             headers: {"Authorization": "Bearer "+_token},
         })
         .done(function(response){
@@ -384,7 +384,7 @@ function loadDataProducto(id)
         });
         $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/marcas/"+response.data.marca_id,
+            url: "https://apiangelamaria.000webhostapp.com/api/marcas/"+response.data.marca_id,
             headers: {"Authorization": "Bearer "+_token},
         })
         .done(function(response){
@@ -430,7 +430,7 @@ function EditarProducto()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/productos",
+			url:"https://apiangelamaria.000webhostapp.com/api/productos",
             headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtId").val(),imagen:$("#txtImagenproducto").val(),nombre_producto:$("#txtNombreproducto").val(),categoria_id:$("#txtCategoriaproducto").val(),marca_id:$("#txtMarcaproducto").val(),descripcion:$("#txtDescripcion").val(),stock:$("#txtStock").val(),precio_venta:$("#txtPrecioventa").val(),precio_compra:$("#txtPreciocompra").val(),lote:$("#txtLote").val()}
 		}
@@ -502,7 +502,7 @@ function eliminarProducto(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost/AngelaMaria/public/api/productos/"+PRODUCTO_TO_DELETE,
+                url: "https://apiangelamaria.000webhostapp.com/api/productos/"+PRODUCTO_TO_DELETE,
                 headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {

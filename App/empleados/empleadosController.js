@@ -1,3 +1,4 @@
+
 //js para productos
 var _token = sessionStorage.getItem('_token');
 
@@ -11,7 +12,7 @@ $(document).ready(function(){
     DT_EMPLEADOS=$('#tablaempleados').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/usuariosAdmin",
+                 url: "https://apiangelamaria.000webhostapp.com/api/usuariosAdmin",
                  headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
@@ -86,7 +87,7 @@ function guardarEmpleado()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/ingresarAdmin",
+			url:"https://apiangelamaria.000webhostapp.com/api/ingresarAdmin",
             headers: {"Authorization": "Bearer "+_token},
 			data:{imagen:$("#txtimagen").val(),name:$("#txtnombre").val(),apellidos:$("#txtapellido").val(),direccion:$("#txtdireccion").val(),numero_documento:$("#txtdocumento").val(),telefono:$("#txttelefono").val(),email:$("#txtcorreo").val(),password:$("#txtcontraseña").val()}
             
@@ -148,7 +149,7 @@ function loadDataEmpleado(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/buscarAdmin/"+id,
+      url: "https://apiangelamaria.000webhostapp.com/api/buscarAdmin/"+id,
       headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
@@ -174,7 +175,7 @@ function EditarEmpleado()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/ActualizarAdmin",
+			url:"https://apiangelamaria.000webhostapp.com/api/ActualizarAdmin",
             headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtId").val(),imagen:$("#txtImagen").val(),name:$("#txtNombre").val(),apellidos:$("#txtApellido").val(),direccion:$("#txtDireccion").val(),numero_documento:$("#txtDocumento").val(),telefono:$("#txtTelefono").val(),email:$("#txtCorreo").val(),password:$("#txtContraseña").val()}
 		}

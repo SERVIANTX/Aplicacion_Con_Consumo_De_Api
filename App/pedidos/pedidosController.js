@@ -15,7 +15,7 @@ $(document).ready(function () {
     DT_PEDIDOS = $('#tablapedidos').DataTable({
         "ajax": {
             type: 'get',
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
+            url: "https://apiangelamaria.000webhostapp.com/api/pedidos",
             headers: {"Authorization": "Bearer "+_token},
             dataSrc: 'data',
             cache: true
@@ -135,7 +135,7 @@ function loadDataPedido(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/pedidos/"+id,
+      url: "https://apiangelamaria.000webhostapp.com/api/pedidos/"+id,
       headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
@@ -169,7 +169,7 @@ function llenardatos()
 function EditarPedido2() {
     $.ajax({
             method: "PUT",
-            url: "http://localhost/AngelaMaria/public/api/pedidos",
+            url: "https://apiangelamaria.000webhostapp.com/api/pedidos",
             headers: {"Authorization": "Bearer "+_token},
             data: {
                 id: $("#txtId").val(),
@@ -215,7 +215,7 @@ function eliminarPedido(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "http://localhost/AngelaMaria/public/api/pedidos/" + PEDIDOS_TO_DELETE,
+                    url: "https://apiangelamaria.000webhostapp.com/api/pedidos/" + PEDIDOS_TO_DELETE,
                     headers: {"Authorization": "Bearer "+_token}
                 })
                 .done(function (msg) {
@@ -243,7 +243,7 @@ function eliminarPedido(id) {
 
 //         $.ajax({
 //             type:'GET',
-//             url: "http://localhost/AngelaMaria/public/api/clientesnombre",
+//             url: "https://apiangelamaria.000webhostapp.com/api/clientesnombre",
 //             headers: {"Authorization": "Bearer "+_token},
 //             success:function(response)
 //             {
@@ -285,7 +285,7 @@ function eliminarPedido(id) {
 
 //         $.ajax({
 //             method: "GET",
-//             url: "http://localhost/AngelaMaria/public/api/clientes/"+id,
+//             url: "https://apiangelamaria.000webhostapp.com/api/clientes/"+id,
             
 //             headers: {"Authorization": "Bearer "+_token}
 //           })

@@ -1,6 +1,6 @@
 //js para productos
 var _token = sessionStorage.getItem('_token');
-
+var baseurl = "";
 if(!_token)
 window.location = "../../index.php";
 var DT_CATEGORIAS;
@@ -11,7 +11,7 @@ $(document).ready(function () {
     DT_CATEGORIAS = $('#tablacategorias').DataTable({
         "ajax": {
             type: 'get',
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "https://apiangelamaria.000webhostapp.com/api/categorias",
             headers: {"Authorization": "Bearer "+_token},
             dataSrc: 'data',
             cache: true
@@ -89,7 +89,7 @@ $(document).ready(function () {
 function guardarCategorias() {
     $.ajax({
             method: "POST",
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "https://apiangelamaria.000webhostapp.com/api/categorias",
             headers: {"Authorization": "Bearer "+_token},
             data: {
                 nombre_categoria: $("#txtnombre_categoria").val(),
@@ -154,7 +154,7 @@ function loadnewCategoria() {
 function loadDataCategoria(id) {
     $.ajax({
             method: "GET",
-            url: "http://localhost/AngelaMaria/public/api/categorias/" + id,
+            url: "https://apiangelamaria.000webhostapp.com/api/categorias/" + id,
             headers: {"Authorization": "Bearer "+_token}
         })
         .done(function (response) {
@@ -182,7 +182,7 @@ function loadDataCategoria(id) {
 function EditarCategoria() {
     $.ajax({
             method: "PUT",
-            url: "http://localhost/AngelaMaria/public/api/categorias",
+            url: "https://apiangelamaria.000webhostapp.com/api/categorias",
             headers: {"Authorization": "Bearer "+_token},
             data: {
                 id: $("#txtId").val(),
@@ -234,7 +234,7 @@ function eliminarCategoria(id) {
 
             $.ajax({
                     method: "delete",
-                    url: "http://localhost/AngelaMaria/public/api/categorias/" + CATEGORIA_TO_DELETE,
+                    url: "https://apiangelamaria.000webhostapp.com/api/categorias/" + CATEGORIA_TO_DELETE,
                     headers: {"Authorization": "Bearer "+_token}
                 })
                 .done(function (msg) {

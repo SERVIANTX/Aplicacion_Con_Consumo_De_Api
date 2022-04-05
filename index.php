@@ -117,7 +117,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "http://localhost/AngelaMaria/public/api/seguridad/login",
+                        url: "https://apiangelamaria.000webhostapp.com/api/seguridad/login",
                         data: {
                             email: $("#txtEmail").val(),
                             password: $("#txtPassword").val()
@@ -125,27 +125,27 @@
                     })
                     .done(function (response) {
 
-                        
                         sessionStorage.setItem('_token', response.data.token);
+                        var _token = sessionStorage.getItem('_token');
                         $.ajax({
                             method: "GET",
-                            url: "http://localhost/AngelaMaria/public/api/datosAdmin/"+$("#txtEmail").val(),
-                            headers: {"Authorization": "Bearer "+ response.data.token}
+                            url: "https://apiangelamaria.000webhostapp.com/api/datosAdmin/"+$("#txtEmail").val(),
+                            headers: {"Authorization": "Bearer "+ _token}
                             })
                             .done(function( response ) {
-                                $.each(response,function(indice,fila){       
+                                $.each(response,function(indice,fila){
 
                                     let admin = fila;
-                                    
+
                                     localStorage.setItem("Admin", JSON.stringify(fila));
 
                                     });
 
                                     window.location="view/home/";
-                                });
-                        
+                            });
+
                     });
-                    
+
 
             }
         });

@@ -12,7 +12,7 @@ $(document).ready(function(){
     DT_MARCAS=$('#tablamarcas').DataTable( {
              "ajax":{
                  type: 'get',
-                 url: "http://localhost/AngelaMaria/public/api/marcas",
+                 url: "https://apiangelamaria.000webhostapp.com/api/marcas",
                  headers: {"Authorization": "Bearer "+_token},
                  dataSrc: 'data',
                  cache: true
@@ -81,7 +81,7 @@ function guardarmarca()
 	$.ajax(
 		{
 			method:"POST",
-			url:"http://localhost/AngelaMaria/public/api/marcas",
+			url:"https://apiangelamaria.000webhostapp.com/api/marcas",
             headers: {"Authorization": "Bearer "+_token},
 			data:{nombre:$("#txtnombremarca").val()}
             
@@ -136,7 +136,7 @@ function loadDataMarca(id)
 {
     $.ajax({
       method: "GET",
-      url: "http://localhost/AngelaMaria/public/api/marcas/"+id,
+      url: "https://apiangelamaria.000webhostapp.com/api/marcas/"+id,
       headers: {"Authorization": "Bearer "+_token}
     })
     .done(function( response ) {
@@ -156,7 +156,7 @@ function EditarMarca()
 	$.ajax(
 		{
 			method:"PUT",
-			url:"http://localhost/AngelaMaria/public/api/marcas",
+			url:"https://apiangelamaria.000webhostapp.com/api/marcas",
             headers: {"Authorization": "Bearer "+_token},
 			data:{id:$("#txtIdmarca").val(),nombre:$("#txtNombre").val()}
 		}
@@ -195,7 +195,7 @@ function eliminarMarca(id){
 
             $.ajax({
                 method: "delete",
-                url: "http://localhost/AngelaMaria/public/api/marcas/"+MARCA_TO_DELETE,
+                url: "https://apiangelamaria.000webhostapp.com/api/marcas/"+MARCA_TO_DELETE,
                 headers: {"Authorization": "Bearer "+_token}
               })
               .done(function( msg ) {

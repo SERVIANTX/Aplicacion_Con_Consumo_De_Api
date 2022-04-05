@@ -11,7 +11,7 @@ var CLIENTE_TO_DELETE;
         DT_CATEGORIAS = $('#tablaclientes').DataTable({
             "ajax": {
                 type: 'get',
-                url: "http://localhost/AngelaMaria/public/api/usuariosClientes",
+                url: "https://apiangelamaria.000webhostapp.com/api/usuariosClientes",
                 headers: {"Authorization": "Bearer "+_token},
                 dataSrc: 'data',
                 cache: true
