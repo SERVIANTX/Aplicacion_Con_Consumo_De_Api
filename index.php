@@ -126,23 +126,23 @@
                     .done(function (response) {
 
                         sessionStorage.setItem('_token', response.data.token);
-                        var _token = sessionStorage.getItem('_token');
-                        $.ajax({
-                            method: "GET",
-                            url: "https://apiangelamaria.000webhostapp.com/api/datosAdmin/"+$("#txtEmail").val(),
-                            headers: {"Authorization": "Bearer "+ _token}
-                            })
-                            .done(function( response ) {
-                                $.each(response,function(indice,fila){
+                        window.location="view/home/";
+                        // $.ajax({
+                        //     method: "GET",
+                        //     url: "https://apiangelamaria.000webhostapp.com/api/datosAdmin/"+$("#txtEmail").val(),
+                        //     headers: {"Authorization": "Bearer "+ _token}
+                        //     })
+                        //     .done(function( response ) {
+                        //         $.each(response,function(indice,fila){
 
-                                    let admin = fila;
+                        //             let admin = fila;
 
-                                    localStorage.setItem("Admin", JSON.stringify(fila));
+                        //             localStorage.setItem("Admin", JSON.stringify(fila));
 
-                                    });
+                        //             });
 
-                                    window.location="view/home/";
-                            });
+                        //             window.location="view/home/";
+                        //     });
 
                     });
 
